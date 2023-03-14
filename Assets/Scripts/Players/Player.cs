@@ -6,6 +6,10 @@ public class Player : MonoBehaviour
 {
     private int currentX, currentY;
     private int moveX, moveY;
+
+    public int GetPlayerCurrentIndX() { return currentX; }
+    public int GetPlayerCurrentIndY() {  return currentY; }
+
     void Start()
     {
         currentX = Managers.Field.GetWidth() / 2;

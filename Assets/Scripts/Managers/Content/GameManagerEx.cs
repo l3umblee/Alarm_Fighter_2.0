@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class GameManagerEx
 {
-    public GameObject CurrentPlayer { get; set; }
-
     public void GameOver()      
     {
         Managers.Clear();

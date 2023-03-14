@@ -39,8 +39,7 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/Player");
         if(go != null) 
         {
-            //Managers.Player.SetPlayer(go.GetComponent<Character>());
-            Managers.Game.CurrentPlayer = go;
+            Managers.Player.SetPlayer(go.GetComponent<Player>());
             go = Managers.Resource.Instantiate("Players/Player");
             SpawnPlayerHpBar(go);
         }
