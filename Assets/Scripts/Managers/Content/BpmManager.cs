@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,30 +6,38 @@ using UnityEngine.UI;
 
 public class BpmManager
 {
-
     int bpm = 96;
-    public bool Able;
+    //public bool Able;
 
+    public Action BehaveAction;     //BpmManager의 UpdatePerBit()에서 실행(바로 아래)
+    double currentTime = 0;
+    
     public int BPM
     {
         get { return bpm; }
         private set
         {
             bpm = value;
-            Init();
         }
     }
 
-    public void Init()
+    //Activates BehaveAction every 60d / bpm seconds
+    public void UpdatePerBit()      //GameScene의 Update()문에서 호출   
     {
-        SetBpmText();
+        currentTime += Time.deltaTime;
+        if (currentTime >= 60d / Managers.Bpm.BPM)
+        {
+            if (BehaveAction != null)
+                BehaveAction.Invoke();
+            //Debug.Log("work!");
+            currentTime -= 60d / Managers.Bpm.BPM;
+        }
     }
 
-
-    void SetBpmText()
+    public void Clear()
     {
-        //Text go = GameObject.Find("BpmValue").GetComponent<Text>();
-        //go.text = $"{bpm}";
+        BehaveAction = null;
+        currentTime = 0;
     }
 
     public float GetAnimSpeed()
@@ -36,10 +45,5 @@ public class BpmManager
         float speed = bpm / 60;
 
         return speed;
-    }
-
-    public void SetBpm(int n)
-    {
-        BPM = n;
     }
 }
