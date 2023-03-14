@@ -10,7 +10,6 @@ public class CameraMonster : MonoBehaviour
     List<CameraAttackPattern.FunctionPointer> callOrderList;
     //public Transform CurrentTransform() { return transform; }//sunho 0218
 
-    
     int index = 0;
 
     void Start()

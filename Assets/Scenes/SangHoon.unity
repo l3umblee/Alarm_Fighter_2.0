@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundBgmName: allthat
-  backGround: {fileID: 7890669779741192122, guid: 2a74a0b74fe40714c8bb9b3d2aa4938d, type: 3}
-  BossMonster: {fileID: 2658406897315016493, guid: 9b7bbee0ba2cbef45b2b72f24ff1ef9f, type: 3}
+  backGround: {fileID: 7942987399816313489, guid: b918aeb8f7b4c9545b70876c0f71e911, type: 3}
+  BossMonster: {fileID: 2629090689266544270, guid: cc9886a36d1cedd48b6437eb1b41ba09, type: 3}
 --- !u!4 &317429142
 Transform:
   m_ObjectHideFlags: 0

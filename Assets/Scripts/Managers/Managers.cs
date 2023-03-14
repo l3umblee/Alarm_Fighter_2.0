@@ -63,6 +63,7 @@ public class Managers : MonoBehaviour       //@Managers(GameObject)¿¡ »ğÀÔµÊ(½ÃÀ
             //Manager Init
             _instance._pool.Init();
             _instance._sound.Init();
+            _instance._item.Init();
         }
     }
 
