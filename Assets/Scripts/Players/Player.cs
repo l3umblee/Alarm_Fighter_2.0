@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTest : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private int currentX, currentY;
     void Start()
@@ -10,9 +10,9 @@ public class PlayerTest : MonoBehaviour
         currentX = Managers.Field.GetWidth() / 2;
         currentY = Managers.Field.GetHeight() / 2;
         this.transform.position = Managers.Field.GetGrid(currentX, currentY).transform.position;
+        Managers.Field.ScaleByRatio(gameObject, currentX, currentY);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButtonDown(0))

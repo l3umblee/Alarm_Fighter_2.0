@@ -3,106 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameScene : BaseScene
+public class GameScene : BaseScene//At the beginning of the this scene, responsible for the essential spawn.
 {
-    int monsterIndex = 0;           //���� ���� �ε���(����� ��)
-    int maxMonsterNum;              //�ִ� ���� ��      //monsters(List).Count �� �ʱ�ȭ��
-
-    [SerializeField]
-
-    List<GameObject> monsters = new List<GameObject>();     //��� �ʱ�ȭ? Inspectorâ�� ���콺 �巡��
-
-
-    [SerializeField]
-    GameObject backGround;
-
-    int GetMaxMonsterNum() { return maxMonsterNum; }
-    void SetMaxMonsterNum() { maxMonsterNum = monsters.Count; }
 
     public override void Clear()
     {
-        //Managers.Timing.Clear();
-        monsters.Clear();
-        monsterIndex = 0;       //?????
+
     }
 
     protected override void Init()
     {
-        base.Init();            //base�� �θ� Ŭ������ �ǹ�
-        SetMaxMonsterNum();
-        Managers.Game.SetMonsterCount(maxMonsterNum);
-        SoundBgmPlay();         //BaseScene�� ���
-        SpawnMonster();
+        base.Init();            
+        SoundBgmPlay();
         SpawnBackGround();
-        //SpawnNoteBar();
-        SpawnPlayer();
         SpawnField();
-        //SpawnMoveButton();
-        //SpawnTimer();
-        //SpawnHpBarMiddle();
-        
-        //Managers.Item.Init();
-        //Managers.Resource.Instantiate("Items/ItemBoxes/@GridBaseSpawn");
-        //Managers.Menu.Init();
-
+        SpawnMonster();       
+        SpawnPlayer();
     }
 
-
-    public void Update()
+    private void SpawnBackGround()
     {
-        //Managers.Timing.UpdatePerBit();         //�� ��Ʈ���� ���� �ൿ ����Ʈ
-        Managers.Game.CheckLeftMonster();       //��� ���Ͱ� ����ϴ��� Ȯ��
+        GameObject go = Managers.Resource.Instantiate("BackGrounds/CameraStageBackGround");
     }
-    private void SpawnMonster()                 //Ư�(monsterIndex) �ε��� ��° ���� ��
+    private void SpawnField()
     {
-        if (monsters.Count == 0) return;
-        GameObject go = Instantiate(monsters[monsterIndex]) as GameObject;
-
-        SpawnMonsterHpBar(go);
-        Managers.Monster.BossMonster = go;
-    }
-    private void SpawnBackGround()              //
-    {
-        GameObject go = Instantiate(backGround) as GameObject;      //
-        //go = Instantiate<GameObject>(go) as GameObject;     //?????
-    }
-    private void SpawnNoteBar()
-    {
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Notes/NoteBar/NoteBar");
-        go = Instantiate(go) as GameObject;
+        GameObject go = Managers.Resource.Instantiate("Fields/Fields");
+        if(go != null) 
+        {
+            Managers.Field.SetField(go.GetComponent<Field>());
+            Managers.Field.Init();
+        }
     }
     private void SpawnPlayer()
     {
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/Player");
-        go = Instantiate<GameObject>(go) as GameObject;
-        //Managers.Player.SetPlayer(go.GetComponent<Character>());
-        Managers.Game.CurrentPlayer = go;
-
-        SpawnPlayerHpBar(go);
+        if(go != null) 
+        {
+            //Managers.Player.SetPlayer(go.GetComponent<Character>());
+            Managers.Game.CurrentPlayer = go;
+            go = Managers.Resource.Instantiate("Players/Player");
+            SpawnPlayerHpBar(go);
+        }
     }
-    private void SpawnField()
+    private void SpawnMonster()                
     {
-        //GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Fields/RoundField1");
-
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Fields/Fields");
-        go = Instantiate<GameObject>(go) as GameObject;
-        Managers.Field.SetField(go.GetComponent<Field>());
-        Managers.Field.Init();
-    }
-    private void SpawnMoveButton()
-    {
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/UI/MoveButton");
-        go = Instantiate<GameObject>(go) as GameObject;
-
-    }
-    
-    private void SpawnTimer()
-    {
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/UI/Timer");
-        go = Instantiate<GameObject>(go) as GameObject;
-
-    }
-
+        GameObject go = Managers.Resource.Instantiate("Monsters/CameraMonster/CameraMonster");
+        if( go != null)
+        {
+            SpawnMonsterHpBar(go);
+            Managers.Monster.BossMonster = go;
+        }
+    }   
     private void SpawnPlayerHpBar(GameObject parent)
     {
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/UI/PlayerHP_1.0");
@@ -118,26 +69,7 @@ public class GameScene : BaseScene
 
     private void SpawnMonsterHpBar(GameObject parent)
     {
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/MonsterHP_1.0");
-        //GameObject go = Managers.Resource.Load<GameObject>("Prefabs/UI/MonsterHpBar");
-        go = Instantiate<GameObject>(go) as GameObject;
+        GameObject go = Managers.Resource.Instantiate("Monsters/MonsterHP_1.0");
         parent.GetComponent<MonsterHpBarUpdater>().monsterHPbar = go;
-        //parent.GetComponent<HpBarUpdater>().hpbar = go;
-        //GameObject go1 = Managers.Resource.Instantiate("Prefabs/UI/MonsterHpBar");
-    }
-    private void SpawnHpBarMiddle()
-    {
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/UI/HpBarMiddle");
-        go = Instantiate<GameObject>(go) as GameObject;
-        //GameObject go1 = Managers.Resource.Instantiate("Prefabs/UI/HpBarMiddle");
-    }
-
-    public void NextMonsterIndex()                          //��� ���� ��
-    {
-        if (monsterIndex < maxMonsterNum - 1)
-        {
-            monsterIndex++;
-            SpawnMonster();
-        }
     }
 }

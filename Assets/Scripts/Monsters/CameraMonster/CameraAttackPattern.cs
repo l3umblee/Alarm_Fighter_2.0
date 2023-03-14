@@ -58,7 +58,7 @@ public class CameraAttackPattern :MonoBehaviour
     //-----------------------------------------------------------------------------------------------------------------
     #region CameraAttackPatterns
 
-    public async void LazerAttack(Transform transform, int x, int y)//Lazer attack where is in grid(x,y), start  = monster eye, where = (x,y)
+    public void LazerAttack(Transform transform, int x, int y)//Lazer attack where is in grid(x,y), start  = monster eye, where = (x,y)
     {
         //Managers.Field.GetGrid(x, y).GetComponent<Animator>().SetTrigger("GridRed");
         //await Task.Delay(300);
