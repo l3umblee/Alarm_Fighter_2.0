@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private int currentX, currentY;
+    private int moveX, moveY;
     void Start()
     {
         currentX = Managers.Field.GetWidth() / 2;
@@ -23,7 +24,15 @@ public class Player : MonoBehaviour
 
             if(hit.collider != null)
             {
-                this.transform.position = hit.collider.transform.position;
+                moveX = Managers.Field.GetIndex_X(hit.collider.gameObject);
+                moveY = Managers.Field.GetIndex_Y(hit.collider.gameObject);
+                //this.transform.position = hit.collider.transform.position;
+                if((Mathf.Abs(moveX - currentX) <= 1) && (Mathf.Abs(moveY - currentY) <= 1))
+                {
+                    this.transform.position = Managers.Field.GetGrid(moveX, moveY).transform.position;
+                    currentX = moveX;
+                    currentY = moveY;
+                }
             }
         }
 

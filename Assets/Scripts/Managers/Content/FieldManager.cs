@@ -15,5 +15,8 @@ public class FieldManager
     public void ScaleByRatio(GameObject go, int x, int y) { field.ScaleByRatio(go, x, y); }
     public int GetHeight() { return field.GetHeight(); }
     public int GetWidth() { return field.GetWidth(); }
+    //¿Á¿± √ﬂ∞°
+    public int GetIndex_X(GameObject go) { return field.GridInd_X(go); }
+    public int GetIndex_Y(GameObject go) { return field.GridInd_Y(go); }
     public void Init() { field.Init(); }
 }
