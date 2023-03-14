@@ -36,7 +36,6 @@ public class MonsterHpBarUpdater : MonoBehaviour
             //Managers.Game.GameOver();  // 게임 오버
             Debug.Log("Game Over");
         }
-        Debug.Log(currentTime);
         hp.fillAmount = currentTime / playTime;
         //hp.fillAmount = (float)stat.CurrentHP / (float)stat.MaxHP;
     }
