@@ -60,6 +60,40 @@ public class Field : MonoBehaviour
             }
         }
     }
+    //¿Á¿± √ﬂ∞°
+    public int GridInd_X(GameObject go)
+    {
+        int x = 0;
+        for(int i = 0; i < width; i++)
+        {
+            for(int j = 0; j < height; j++)
+            {
+                if (gridArray[i][j].grid.Equals(go))
+                {
+                    x = i;            
+                    break;
+                }
+            }
+        }
+        return x;
+    }
+    public int GridInd_Y(GameObject go)
+    {
+        int y = 0;
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (gridArray[i][j].grid.Equals(go))
+                {
+                    y = j;
+                    break;
+                }
+            }
+        }
+        return y;
+    }
+
 }
 
 public class FieldInfo
