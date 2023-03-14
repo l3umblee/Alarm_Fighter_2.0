@@ -56,7 +56,7 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
     }   
     private void SpawnPlayerHpBar(GameObject parent)
     {
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/UI/PlayerHP_1.0");
+        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/PlayerHP");
         go = Instantiate<GameObject>(go) as GameObject;
         go.transform.Find("HPLoss1").gameObject.SetActive(false);
         go.transform.Find("HPLoss2").gameObject.SetActive(false);
@@ -69,7 +69,10 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
 
     private void SpawnMonsterHpBar(GameObject parent)
     {
-        GameObject go = Managers.Resource.Instantiate("Monsters/MonsterHP_1.0");
-        parent.GetComponent<MonsterHpBarUpdater>().monsterHPbar = go;
+        GameObject go = Managers.Resource.Instantiate("Monsters/CameraMonster/MonsterHP");
+        if(go != null) 
+        {
+            parent.GetComponent<MonsterHpBarUpdater>().monsterHPbar = go;
+        }
     }
 }
