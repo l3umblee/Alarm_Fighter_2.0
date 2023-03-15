@@ -17,6 +17,7 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
         SpawnField();
         SpawnMonster();       
         SpawnPlayer();
+        SpawnItemSpawner();
     }
     public void Update()
     {
@@ -80,5 +81,9 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
     public override void Clear()
     {
         Managers.Bpm.Clear();
+    }
+    private void SpawnItemSpawner()
+    {
+        Managers.Item.Init();
     }
 }

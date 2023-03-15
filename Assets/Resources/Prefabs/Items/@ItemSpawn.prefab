@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxItem: 4
-  delay: 10
+  delay: 3
