@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class GameScene : BaseScene//At the beginning of the this scene, responsible for the essential spawn.
 {
-
-    public override void Clear()
-    {
-
-    }
+    [SerializeField] GameObject backGround;
+    [SerializeField] GameObject BossMonster;
+    [SerializeField] GameObject MonsterHP;
 
     protected override void Init()
     {
@@ -19,6 +17,10 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
         SpawnField();
         SpawnMonster();       
         SpawnPlayer();
+    }
+    public void Update()
+    {
+        Managers.Bpm.UpdatePerBit();
     }
 
     private void SpawnBackGround()
@@ -39,8 +41,8 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/Player");
         if(go != null) 
         {
-            Managers.Player.SetPlayer(go.GetComponent<Player>());
             go = Managers.Resource.Instantiate("Players/Player");
+            Managers.Player.SetPlayer(go.GetComponent<Player>());
             SpawnPlayerHpBar(go);
         }
     }
@@ -73,5 +75,10 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
         {
             parent.GetComponent<MonsterHpBarUpdater>().monsterHPbar = go;
         }
+    }
+
+    public override void Clear()
+    {
+        Managers.Bpm.Clear();
     }
 }
