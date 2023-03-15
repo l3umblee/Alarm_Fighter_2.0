@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
@@ -10,6 +11,10 @@ public class CameraAttackPattern :MonoBehaviour
 {
     public delegate void FunctionPointer();
     public List<FunctionPointer> noteBarList_1;
+<<<<<<< HEAD
+
+=======
+>>>>>>> ec7f5b84db1c4315ab6a024604a799695acd1b6e
     private void Awake()
     {
         Init();
@@ -17,41 +22,44 @@ public class CameraAttackPattern :MonoBehaviour
     
     public void Init()
     {
-        noteBarList_1 = new List<FunctionPointer>() { One, Rest, Row, Rest, Column, One, Column, Rest };
+        noteBarList_1 = new List<FunctionPointer>() { One, Rest, Row, Rest, Column, One, Special, Rest };
     }
-
-    public void Row()
+    
+    private void Row()   
     {
-        GameObject cameraLens = Util.FindChild(Managers.Monster.BossMonster, "카메라 부분_7",true);
         for (int i = 0; i < Managers.Field.GetWidth(); i++)
         {
-            LazerAttack(cameraLens.transform, i, Managers.Player.GetCurrentIndY());
+            Managers.Field.GetGrid(i, Managers.Player.GetCurrentIndY()).GetComponent<Animator>().SetTrigger("Row");
         }
     }
-    public void Rest()
+
+    private void Column() 
+    {
+        for (int i = 0; i < Managers.Field.GetHeight(); i++)
+        {
+            Managers.Field.GetGrid(Managers.Player.GetCurrentIndX(), i).GetComponent<Animator>().SetTrigger("Column");
+        }
+    }
+
+    private void One()    
+    {
+       Managers.Field.GetGrid(Managers.Player.GetCurrentIndX(), Managers.Player.GetCurrentIndY()).GetComponent<Animator>().SetTrigger("One");
+    }
+    
+    private void Special()
+    {
+        FlashAttack();
+    }
+    private void Rest()
     {
       //does nothing
     }
     
-    public void Column()
-    {
-        // int rand = UnityEngine.Random.Range(1, Managers.Field.GetWidth() - 1);
-        GameObject cameraLens = Util.FindChild(Managers.Monster.BossMonster, "카메라 부분_7",true);
-        for (int i = 0; i < Managers.Field.GetHeight(); i++)
-        {
-            LazerAttack(cameraLens.transform, Managers.Player.GetCurrentIndX(), i);
-        }
-    }
 
-    public void One() 
-    {
-        TantacleAttack(Managers.Player.GetCurrentIndX(), Managers.Player.GetCurrentIndY());
-    }
-    
     public List<FunctionPointer> CreateCallOrderList()
     {
         List<FunctionPointer> callOrderList = new List<FunctionPointer>();
-        
+
         for (int i = 0; i < noteBarList_1.Count; i++)
         {
             callOrderList.Add(noteBarList_1[i]);
@@ -59,15 +67,15 @@ public class CameraAttackPattern :MonoBehaviour
         return callOrderList;
     }
 
-    
     //-----------------------------------------------------------------------------------------------------------------
     #region CameraAttackPatterns
 
-    public void LazerAttack(Transform transform, int x, int y)//Lazer attack where is in grid(x,y), start  = monster eye, where = (x,y)
+    public void LazerAttack()//Lazer attack where is in grid(x,y), start  = monster eye, where = (x,y)
     {
         //Managers.Field.GetGrid(x, y).GetComponent<Animator>().SetTrigger("GridRed");
         //await Task.Delay(300);
-        LazerInit(transform, x, y);//n second after use
+        GameObject cameraLens = Util.FindChild(Managers.Monster.BossMonster, "카메라 부분_7", true);
+        LazerInit(cameraLens.transform, Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));//n second after use
     }
     #region LazerAttack_Private
     private void LazerInit(Transform transform, int x, int y)
@@ -152,10 +160,26 @@ public class CameraAttackPattern :MonoBehaviour
     }
 
     #endregion
-    public void TantacleAttack(int x, int y)
+    int tantacleNum = 0;
+    List<String> tantacleArray = new List<string>() {"Tantacle0","Tantacle1","Tantacle2" };
+    public void TantacleAttack()
     {
-        GameObject tantacle = Managers.Resource.Instantiate("Prefabs/Monsters/CameraMonster/Effects/Tantacle1");
-        tantacle.transform.position = Managers.Field.GetGrid(x, y).transform.position;
+        TantacleInit(Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));
+    }
+    
+    private void TantacleInit(int x, int y)
+    {
+        GameObject go = Managers.Resource.Load<GameObject>($"Prefabs/Monsters/CameraMonster/Effects/{tantacleArray[tantacleNum]}");
+        GameObject tantacle = Instantiate<GameObject>(go);
+        Managers.Field.ScaleByRatio(tantacle,x,y);
+        FieldInfo fieldInfo = Managers.Field.GetFieldInfo(x, y);
+        tantacle.transform.localScale = new Vector3(1.5f, 0.8f, 1f) * fieldInfo.ratio;
+        //tantacle.transform.localScale.y = new Vector3(1f, 0.5f, 1f);
+        tantacle.transform.position = fieldInfo.grid.transform.position;
+
+        tantacleNum++;
+        if (tantacleNum > 2)
+            tantacleNum = 0;
     }
     #region TantacleAttack_Private
 
@@ -169,9 +193,4 @@ public class CameraAttackPattern :MonoBehaviour
     #endregion
 
     #endregion
-
-
-  
-
-
 }
