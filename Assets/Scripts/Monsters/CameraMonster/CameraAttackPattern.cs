@@ -17,31 +17,37 @@ public class CameraAttackPattern :MonoBehaviour
     
     public void Init()
     {
-        noteBarList_1 = new List<FunctionPointer>() { Row, Rest, Row, Rest, Column, Row, Column, Rest };
+        noteBarList_1 = new List<FunctionPointer>() { One, Rest, Row, Rest, Column, One, Column, Rest };
     }
 
     public void Row()
     {
+        GameObject cameraLens = Util.FindChild(Managers.Monster.BossMonster, "카메라 부분_7",true);
         for (int i = 0; i < Managers.Field.GetWidth(); i++)
         {
-            //LazerAttack(Managers.Monster.BossMonster.transform, i, Managers.Player.GetCurrentY());
-            LazerAttack(Managers.Monster.BossMonster.transform, i, 1);
+            LazerAttack(cameraLens.transform, i, Managers.Player.GetCurrentIndY());
         }
     }
     public void Rest()
     {
-      
+      //does nothing
     }
     
     public void Column()
     {
         // int rand = UnityEngine.Random.Range(1, Managers.Field.GetWidth() - 1);
+        GameObject cameraLens = Util.FindChild(Managers.Monster.BossMonster, "카메라 부분_7",true);
         for (int i = 0; i < Managers.Field.GetHeight(); i++)
         {
-            //LazerAttack(Managers.Monster.BossMonster.transform, Managers.Player.GetCurrentX(), i);
-            LazerAttack(Managers.Monster.BossMonster.transform,1, i);
+            LazerAttack(cameraLens.transform, Managers.Player.GetCurrentIndX(), i);
         }
     }
+
+    public void One() 
+    {
+        TantacleAttack(Managers.Player.GetCurrentIndX(), Managers.Player.GetCurrentIndY());
+    }
+    
     public List<FunctionPointer> CreateCallOrderList()
     {
         List<FunctionPointer> callOrderList = new List<FunctionPointer>();
@@ -146,7 +152,11 @@ public class CameraAttackPattern :MonoBehaviour
     }
 
     #endregion
-    public void TantacleAttack() { }
+    public void TantacleAttack(int x, int y)
+    {
+        GameObject tantacle = Managers.Resource.Instantiate("Prefabs/Monsters/CameraMonster/Effects/Tantacle1");
+        tantacle.transform.position = Managers.Field.GetGrid(x, y).transform.position;
+    }
     #region TantacleAttack_Private
 
     #endregion
