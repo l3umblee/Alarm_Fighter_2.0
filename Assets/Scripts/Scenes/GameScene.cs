@@ -19,6 +19,7 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
         SpawnField();
         SpawnMonster();       
         SpawnPlayer();
+        SpawnItemSpawner();
     }
 
     private void SpawnBackGround()
@@ -73,5 +74,9 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
         {
             parent.GetComponent<MonsterHpBarUpdater>().monsterHPbar = go;
         }
+    }
+    private void SpawnItemSpawner()
+    {
+        Managers.Item.Init();
     }
 }

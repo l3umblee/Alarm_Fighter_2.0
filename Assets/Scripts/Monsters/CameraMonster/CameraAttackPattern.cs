@@ -8,9 +8,8 @@ using UnityEngine.UIElements;
 
 public class CameraAttackPattern :MonoBehaviour
 {
-    //public delegate void FunctionPointer();
     public delegate void FunctionPointer();
-    public List<FunctionPointer> noteBarList_1;//new List<FunctionPointer>() { Row, Rest, Row, Rest, Column, Row, Column, Rest };
+    public List<FunctionPointer> noteBarList_1;
     private void Awake()
     {
         Init();
