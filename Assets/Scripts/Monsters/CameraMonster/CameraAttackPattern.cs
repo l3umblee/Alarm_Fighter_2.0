@@ -11,10 +11,7 @@ public class CameraAttackPattern :MonoBehaviour
 {
     public delegate void FunctionPointer();
     public List<FunctionPointer> noteBarList_1;
-<<<<<<< HEAD
 
-=======
->>>>>>> ec7f5b84db1c4315ab6a024604a799695acd1b6e
     private void Awake()
     {
         Init();
