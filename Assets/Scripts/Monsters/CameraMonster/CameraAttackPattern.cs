@@ -11,10 +11,7 @@ public class CameraAttackPattern :MonoBehaviour
 {
     public delegate void FunctionPointer();
     public List<FunctionPointer> noteBarList_1;
-<<<<<<< HEAD
 
-=======
->>>>>>> ec7f5b84db1c4315ab6a024604a799695acd1b6e
     private void Awake()
     {
         Init();
@@ -81,21 +78,30 @@ public class CameraAttackPattern :MonoBehaviour
     private void LazerInit(Transform transform, int x, int y)
     {
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/CameraMonster/Effects/Lazer");
-        GameObject effect = Managers.Resource.Load<GameObject>("Prefabs/Monsters/CameraMonster/Effects/Lazer_Boom");
+        //GameObject effect = Managers.Resource.Load<GameObject>("Prefabs/Monsters/CameraMonster/Effects/Lazer_Boom");
 
         go.transform.position = transform.position;
         SetBasicScale(go);
         Transform transform_my = go.transform;
         Transform transform_target = SetTarget(x, y);
-        effect.transform.position = SetEffect(x, y);
+        //effect.transform.position = SetEffect(x, y);
         SetRotation(go, transform_my, transform_target);
         go = Managers.Resource.Instantiate("Monsters/CameraMonster/Effects/Lazer");
-        effect = Managers.Resource.Instantiate("Monsters/CameraMonster/Effects/Lazer_Boom");
+        //effect = Managers.Resource.Instantiate("Monsters/CameraMonster/Effects/Lazer_Boom");
 
         go.AddComponent<Lazer>();
+        //effect.AddComponent<Lazer_Boom>();
+        StartCoroutine(LazerBoomInit(x, y));
+
+    }
+    
+    private IEnumerator LazerBoomInit(int x,int y)
+    {
+        yield return new WaitForSeconds(0.2f);
+        GameObject effect = Managers.Resource.Load<GameObject>("Prefabs/Monsters/CameraMonster/Effects/Lazer_Boom");
+        effect.transform.position = SetEffect(x, y);    
+        effect = Managers.Resource.Instantiate("Monsters/CameraMonster/Effects/Lazer_Boom");
         effect.AddComponent<Lazer_Boom>();
-
-
     }
     public void SetBasicScale(GameObject go)        //Change private to public
     {

@@ -9,7 +9,7 @@ public class Lazer_Boom : MonoBehaviour
 
     void Start()
     {
-        Invoke("Destroy", 0.3f);
+        Invoke("Destroy", 0.2f);
     }
     void Destroy()
     {
