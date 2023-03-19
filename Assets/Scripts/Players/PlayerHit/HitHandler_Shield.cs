@@ -13,7 +13,10 @@ public class HitHandler_Shield : HitHandler
     {
         GameObject shield = stat.GetShield();
         if (shield == null)
+        {
             successor.Request();
+            return;
+        }
 
         if (!shield.GetComponent<Shield>().BlockDamage())
             successor.Request();
