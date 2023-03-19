@@ -42,11 +42,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.M))
         {
-            GetComponent<Stat>().CurrentHP -= 1;
+            GetComponent<PlayerStat>().CurrentHP -= 1;
         }
         else if(Input.GetKeyDown(KeyCode.N))
         {
-            GetComponent<Stat>().CurrentHP += 1;
+            GetComponent<PlayerStat>().CurrentHP += 1;
         }
     }
 }
