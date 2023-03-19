@@ -7,10 +7,11 @@ public class CameraMonster : MonoBehaviour
 {
     //public delegate void FunctionPointer();
     CameraAttackPattern cameraAttackPattern;
-    List<CameraAttackPattern.FunctionPointer> callOrderList;
+    List<List<CameraAttackPattern.FunctionPointer>> callOrderList;
     //public Transform CurrentTransform() { return transform; }//sunho 0218
 
-    int index = 0;
+    int index;
+    int note;
 
     void Start()
     {
@@ -21,6 +22,8 @@ public class CameraMonster : MonoBehaviour
 
         callOrderList = cameraAttackPattern.CreateCallOrderList();
 
+        index = 0;
+        note = 0;
         /*        CallOrderList.Add(Pattern1);
                 CallOrderList.Add(Pattern2);
                 CallOrderList.Add(Pattern2);
@@ -30,11 +33,19 @@ public class CameraMonster : MonoBehaviour
 
     void BitBehave()
     {
-        if (index > callOrderList.Count - 1) // 4 재사용성 없음, 다른 것으로 대체될 수 있음
+
+        if (index > callOrderList.Count - 1)
             index = 0;
 
-        callOrderList[index]();
-        index++;
+        callOrderList[index][note]();
 
+        note++;
+        if (note >= 4)
+        {
+            note = 0;
+            index++;
+        }
+
+        //index++;
     }
 }

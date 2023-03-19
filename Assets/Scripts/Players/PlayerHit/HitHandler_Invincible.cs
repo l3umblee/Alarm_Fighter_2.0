@@ -13,7 +13,10 @@ public class HitHandler_Invincible : HitHandler
     {
         GameObject Item_angle = stat.GetItem_Angle();
         if (Item_angle == null)
+        {
             successor.Request();
+            return;
+        }
 
         if (!Item_angle.GetComponent<Item_angle>().Invincible())
             successor.Request();

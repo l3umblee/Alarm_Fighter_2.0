@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerStat : MonoBehaviour
 {
-    float MaxHP;
-    float CurrentHP;
+    public float MaxHP;
+    public float CurrentHP;
     GameObject shield;
     GameObject item_angle;
     void Start()
     {
-        MaxHP = 10;
-        CurrentHP = 10;
+        //MaxHP = 10;
+        //CurrentHP = 10;
         //GetComponent<HpBarUpdater>().GetSliderComponent().maxValue = MaxHP;
 
     }

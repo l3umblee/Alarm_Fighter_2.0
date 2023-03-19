@@ -33,20 +33,22 @@ public class Player : MonoBehaviour
                 //this.transform.position = hit.collider.transform.position;
                 if((Mathf.Abs(moveX - currentX) <= 1) && (Mathf.Abs(moveY - currentY) <= 1))
                 {
+                    if (currentX == moveX && currentY == moveY) return;
                     this.transform.position = Managers.Field.GetGrid(moveX, moveY).transform.position;
                     currentX = moveX;
                     currentY = moveY;
+                    Managers.Sound.Play("Effects/Move04", Define.Sound.Effect, 1.0f, 0.2f);
                 }
             }
         }
 
         if (Input.GetKeyDown(KeyCode.M))
         {
-            GetComponent<Stat>().CurrentHP -= 1;
+            GetComponent<PlayerStat>().CurrentHP -= 1;
         }
         else if(Input.GetKeyDown(KeyCode.N))
         {
-            GetComponent<Stat>().CurrentHP += 1;
+            GetComponent<PlayerStat>().CurrentHP += 1;
         }
     }
 }

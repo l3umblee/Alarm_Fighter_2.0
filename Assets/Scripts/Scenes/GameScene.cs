@@ -26,7 +26,15 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
 
     private void SpawnBackGround()
     {
-        GameObject go = Managers.Resource.Instantiate("BackGrounds/CameraStageBackGround");
+        GameObject go = Managers.Resource.Instantiate("BackGrounds/CleanCameraStageBackGround");
+        Managers.Resource.Instantiate("Monsters/CameraMonster/CameraSubMonster/CameraSubMonster_0");
+        Managers.Resource.Instantiate("Monsters/CameraMonster/CameraSubMonster/CameraSubMonster_1");
+        Managers.Resource.Instantiate("Monsters/CameraMonster/CameraSubMonster/CameraSubMonster_2");
+        Managers.Resource.Instantiate("Monsters/CameraMonster/CameraSubMonster/CameraSubMonster_3");
+        Managers.Resource.Instantiate("Monsters/CameraMonster/CameraSubMonster/CameraSubMonster_4");
+        Managers.Resource.Instantiate("Monsters/CameraMonster/CameraSubMonster/CameraSubMonster_5");
+        Managers.Resource.Instantiate("Monsters/CameraMonster/CameraSubMonster/CameraSubMonster_6");
+        Managers.Resource.Instantiate("Monsters/CameraMonster/CameraSubMonster/CameraSubMonster_7");
     }
     private void SpawnField()
     {
@@ -59,13 +67,12 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
     private void SpawnPlayerHpBar(GameObject parent)
     {
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/PlayerHP");
-        go = Instantiate<GameObject>(go) as GameObject;
-        go.transform.Find("HPLoss1").gameObject.SetActive(false);
-        go.transform.Find("HPLoss2").gameObject.SetActive(false);
-        go.transform.Find("HPLoss3").gameObject.SetActive(false);
-        go.transform.Find("HPLoss4").gameObject.SetActive(false);
-        go.transform.Find("HPLoss5").gameObject.SetActive(false);
-
+        go.transform.Find("Panel/HPLoss1").gameObject.SetActive(false);
+        go.transform.Find("Panel/HPLoss2").gameObject.SetActive(false);
+        go.transform.Find("Panel/HPLoss3").gameObject.SetActive(false);
+        go.transform.Find("Panel/HPLoss4").gameObject.SetActive(false);
+        go.transform.Find("Panel/HPLoss5").gameObject.SetActive(false);
+        Managers.Resource.Instantiate("Players/PlayerHP");
         parent.GetComponent<PlayerHpBarUpdater>().playerHpbar = go;
     }
 
