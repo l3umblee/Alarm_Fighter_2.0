@@ -67,13 +67,12 @@ public class GameScene : BaseScene//At the beginning of the this scene, responsi
     private void SpawnPlayerHpBar(GameObject parent)
     {
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/PlayerHP");
-        go = Instantiate<GameObject>(go) as GameObject;
-        go.transform.Find("HPLoss1").gameObject.SetActive(false);
-        go.transform.Find("HPLoss2").gameObject.SetActive(false);
-        go.transform.Find("HPLoss3").gameObject.SetActive(false);
-        go.transform.Find("HPLoss4").gameObject.SetActive(false);
-        go.transform.Find("HPLoss5").gameObject.SetActive(false);
-
+        go.transform.Find("Panel/HPLoss1").gameObject.SetActive(false);
+        go.transform.Find("Panel/HPLoss2").gameObject.SetActive(false);
+        go.transform.Find("Panel/HPLoss3").gameObject.SetActive(false);
+        go.transform.Find("Panel/HPLoss4").gameObject.SetActive(false);
+        go.transform.Find("Panel/HPLoss5").gameObject.SetActive(false);
+        Managers.Resource.Instantiate("Players/PlayerHP");
         parent.GetComponent<PlayerHpBarUpdater>().playerHpbar = go;
     }
 

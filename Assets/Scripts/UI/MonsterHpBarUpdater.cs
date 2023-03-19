@@ -21,7 +21,7 @@ public class MonsterHpBarUpdater : MonoBehaviour
                 Debug.Log(hp);
         */
         currentTime = playTime;
-        hp = monsterHPbar.transform.Find("FullHP").GetComponent<Image>();
+        hp = monsterHPbar.transform.Find("Panel/FullHP").GetComponent<Image>();
         Debug.Log(hp);
         //hp = this.transform.Find("FullHP").GetComponent<Image>();
     }
