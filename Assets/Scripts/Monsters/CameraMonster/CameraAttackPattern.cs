@@ -11,7 +11,11 @@ public class CameraAttackPattern :MonoBehaviour
 {
     public delegate void FunctionPointer();
     public List<FunctionPointer> noteBarList_1;
-
+    public List<FunctionPointer> noteBarList_2;
+    public List<FunctionPointer> noteBarList_3;
+    public List<FunctionPointer> noteBarList_4;
+    public List<FunctionPointer> noteBarList_5;
+    
     private void Awake()
     {
         Init();
@@ -19,7 +23,8 @@ public class CameraAttackPattern :MonoBehaviour
     
     public void Init()
     {
-        noteBarList_1 = new List<FunctionPointer>() { One, Rest, Row, Rest, Column, One, Special, Rest };
+        noteBarList_1 = new List<FunctionPointer>() { Defalut1_1, Defalut1_2, Defalut1_1, Defalut1_2 };
+        noteBarList_2 = new List<FunctionPointer>() { Row1, Row2, Row3, Special };
     }
     
     private void Row()   
@@ -27,6 +32,28 @@ public class CameraAttackPattern :MonoBehaviour
         for (int i = 0; i < Managers.Field.GetWidth(); i++)
         {
             Managers.Field.GetGrid(i, Managers.Player.GetCurrentIndY()).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
+
+    private void Row1()
+    {
+        for (int i = 0; i < Managers.Field.GetWidth(); i++)
+        {
+            Managers.Field.GetGrid(0, i).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
+    private void Row2()
+    {
+        for (int i = 0; i < Managers.Field.GetWidth(); i++)
+        {
+            Managers.Field.GetGrid(1, i).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
+    private void Row3()
+    {
+        for (int i = 0; i < Managers.Field.GetWidth(); i++)
+        {
+            Managers.Field.GetGrid(2, i).GetComponent<Animator>().SetTrigger("Row");
         }
     }
 
@@ -38,6 +65,27 @@ public class CameraAttackPattern :MonoBehaviour
         }
     }
 
+    private void Column1()
+    {
+        for (int i = 0; i < Managers.Field.GetHeight(); i++)
+        {
+            Managers.Field.GetGrid(i, 0).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
+    private void Column2()
+    {
+        for (int i = 0; i < Managers.Field.GetHeight(); i++)
+        {
+            Managers.Field.GetGrid(i, 1).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
+    private void Column3()
+    {
+        for (int i = 0; i < Managers.Field.GetHeight(); i++)
+        {
+            Managers.Field.GetGrid(i, 2).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
     private void One()    
     {
        Managers.Field.GetGrid(Managers.Player.GetCurrentIndX(), Managers.Player.GetCurrentIndY()).GetComponent<Animator>().SetTrigger("One");
@@ -51,16 +99,51 @@ public class CameraAttackPattern :MonoBehaviour
     {
       //does nothing
     }
-    
 
-    public List<FunctionPointer> CreateCallOrderList()
+    private void Defalut1_1()
     {
-        List<FunctionPointer> callOrderList = new List<FunctionPointer>();
+        Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(1, 1).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
+    }
+    private void Defalut1_2()
+    {
+        Managers.Field.GetGrid(1, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(0, 1).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 1).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(1, 2).GetComponent<Animator>().SetTrigger("One");
+    }
+    private void Defalut2_1()
+    {
+        Managers.Field.GetGrid(1, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(0, 1).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(1, 1).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 1).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(1, 2).GetComponent<Animator>().SetTrigger("One");
+    }
+    private void Defalut2_2()
+    {
+        Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
+    }
 
-        for (int i = 0; i < noteBarList_1.Count; i++)
-        {
-            callOrderList.Add(noteBarList_1[i]);
-        }
+
+    public List<List<FunctionPointer>> CreateCallOrderList()
+    {
+        List<List<FunctionPointer>> callOrderList = new List<List<FunctionPointer>>();
+        /*
+                for (int i = 0; i < noteBarList_1.Count; i++)
+                {
+                    callOrderList.Add(noteBarList_1[i]);
+                }
+        */
+        callOrderList.Add(noteBarList_1);
+        callOrderList.Add(noteBarList_2);
+
         return callOrderList;
     }
 
