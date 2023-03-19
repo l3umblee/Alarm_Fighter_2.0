@@ -7,13 +7,13 @@ public class PlayerHpBarUpdater : MonoBehaviour
     [SerializeField]
     public GameObject playerHpbar;
 
-    Stat stat;
+    PlayerStat stat;
     List<GameObject> hpbarLossList;
 
     // Start is called before the first frame update
     void Start()
     {
-        stat = GetComponent<Stat>();
+        stat = GetComponent<PlayerStat>();
         hpbarLossList = new List<GameObject>();
         hpbarLossList.Add(playerHpbar.transform.Find("HPLoss5").gameObject);
         hpbarLossList.Add(playerHpbar.transform.Find("HPLoss4").gameObject);
