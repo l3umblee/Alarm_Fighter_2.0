@@ -37,6 +37,8 @@ public class MonsterHpBarUpdater : MonoBehaviour
             Debug.Log("Game Over");
         }
         hp.fillAmount = currentTime / playTime;
+        //dong ju
+        GetComponent<Animator>().SetFloat("Time", currentTime / playTime);
         //hp.fillAmount = (float)stat.CurrentHP / (float)stat.MaxHP;
     }
 }

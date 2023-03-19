@@ -12,13 +12,20 @@ public class ItemManager
         int rand = Random.Range(0, itemList.Count);
         GameObject grid = Managers.Field.GetGrid(x, y);
         GameObject item = Managers.Resource.Instantiate(itemList[rand], grid.transform);
+        item.GetComponent<DroppedItem>().SetGridInfo(x, y);
+
+
+        Managers.Field.ScaleByRatio(item, x, y);
+        Managers.Field.GetFieldInfo(x, y).spawnable = false;
 
         return item;
     }
     
     public void ItemDeSpawn(GameObject go)
     {
-        pool.GetComponent<GridBaseSpawn>().ItemDestroy(go);
+        Managers.Resource.Destroy(go);
+        pool.GetComponent<GridBaseSpawn>().ReduceItemCount();
+        Managers.Field.GetFieldInfo(go.GetComponent<DroppedItem>().x, go.GetComponent<DroppedItem>().x).spawnable = true;
     }
 
     public void Init()
@@ -36,4 +43,5 @@ public class ItemManager
         itemList.Add("Items/DroppedItems/DroppedRandomBox");
         itemList.Add("Items/DroppedItems/DroppedVaccineGun");
     }
+
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroppedHealPotion : MonoBehaviour
+public class DroppedHealPotion : DroppedItem
 {
     public float healPower = 2;
 
