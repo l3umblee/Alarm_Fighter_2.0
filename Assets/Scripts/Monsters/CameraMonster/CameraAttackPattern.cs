@@ -25,6 +25,7 @@ public class CameraAttackPattern :MonoBehaviour
     {
         noteBarList_1 = new List<FunctionPointer>() { Defalut1_1, Defalut1_2, Defalut1_1, Defalut1_2 };
         noteBarList_2 = new List<FunctionPointer>() { Row1, Row2, Row3, Special };
+        noteBarList_3 = new List<FunctionPointer>() { Column1, Column2, Column3, Special };
     }
     
     private void Row()   
@@ -143,6 +144,8 @@ public class CameraAttackPattern :MonoBehaviour
         */
         callOrderList.Add(noteBarList_1);
         callOrderList.Add(noteBarList_2);
+        callOrderList.Add(noteBarList_1);
+        callOrderList.Add(noteBarList_3);
 
         return callOrderList;
     }
