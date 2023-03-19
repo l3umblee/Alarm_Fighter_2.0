@@ -70,12 +70,12 @@ public class Field : MonoBehaviour
             {
                 if (gridArray[i][j].grid.Equals(go))
                 {
-                    x = i;            
-                    break;
+                    x = i;
+                    return x;
                 }
             }
         }
-        return x;
+        return Managers.Player.GetCurrentIndX();
     }
     public int GridInd_Y(GameObject go)
     {
@@ -87,11 +87,11 @@ public class Field : MonoBehaviour
                 if (gridArray[i][j].grid.Equals(go))
                 {
                     y = j;
-                    break;
+                    return y;
                 }
             }
         }
-        return y;
+        return Managers.Player.GetCurrentIndY();
     }
 
 }
