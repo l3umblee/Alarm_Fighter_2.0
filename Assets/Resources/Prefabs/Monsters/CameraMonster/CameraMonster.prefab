@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: -9012483724394054916}
   - component: {fileID: -6591887851695333914}
   - component: {fileID: 1702667997677892075}
+  - component: {fileID: -2744728373160376825}
   m_Layer: 0
   m_Name: CameraMonster
   m_TagString: Untagged
@@ -379,6 +380,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a5a2a6c72f62854588386f171938bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2744728373160376825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346717800779563982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e354c84a7417d64180a18f5fcaa3de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1346717801204647948
