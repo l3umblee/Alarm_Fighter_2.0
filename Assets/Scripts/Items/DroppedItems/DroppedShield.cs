@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroppedShield : MonoBehaviour
+public class DroppedShield : DroppedItem
 {
     string Shield = "Items/ActiveItems/Shield";
 

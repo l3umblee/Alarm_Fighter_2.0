@@ -14,10 +14,8 @@ public class GridBaseSpawn : MonoBehaviour
 
 
 
-    public void ItemDestroy(GameObject go)
+    public void ReduceItemCount()
     {
-        Debug.Log("Destroy");
-        Managers.Resource.Destroy(go);
         currentItem--;
     }
 

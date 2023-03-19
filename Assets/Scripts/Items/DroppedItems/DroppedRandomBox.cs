@@ -9,7 +9,7 @@ enum Type
     HARM,
 
 }
-public class DroppedRandomBox : MonoBehaviour
+public class DroppedRandomBox : DroppedItem
 {
     public float BuffTime = 3f;
     string benefit = "Items/ActiveItems/Item_Angle";

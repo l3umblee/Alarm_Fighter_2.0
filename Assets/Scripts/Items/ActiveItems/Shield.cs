@@ -9,13 +9,12 @@ public class Shield : MonoBehaviour
 
     public bool BlockDamage()
     {
+        durability -= 1;
         if (durability <= 0)
         {
             Destroy();
-            return false;
         }
-        durability -= 1;
-        return true;
+        return false;
 
     }
     private void Start()

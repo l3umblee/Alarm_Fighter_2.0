@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroppedVaccineGun : MonoBehaviour
+public class DroppedVaccineGun : DroppedItem
 {
     public float timeAmount = 3f;
-
+    string vaccine = "Items/ActiveItems/VaccineEffect";
     public void Active()
     {
         GetComponent<BoxCollider2D>().enabled = true;
@@ -15,9 +15,13 @@ public class DroppedVaccineGun : MonoBehaviour
         GameObject go = collision.gameObject;
         if (go.CompareTag("Player"))
         {
-            //Managers.Timer.ReduceTime(timeAmount);
-            Managers.Item.ItemDeSpawn(gameObject);
+            PlayerStat stat = go.GetComponent<PlayerStat>();
+            if (stat != null)
+            {
+                Managers.Resource.Instantiate(vaccine, go.transform);
+                Managers.Item.ItemDeSpawn(gameObject);
 
+            }
         }
     }
 }
