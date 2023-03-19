@@ -73,6 +73,7 @@ public class CameraAttackPattern :MonoBehaviour
         //await Task.Delay(300);
         GameObject cameraLens = Util.FindChild(Managers.Monster.BossMonster, "카메라 부분_7", true);
         LazerInit(cameraLens.transform, Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));//n second after use
+        Managers.Sound.Play("Effects/Laser04",Define.Sound.Effect,1.0f,0.2f);
     }
     #region LazerAttack_Private
     private void LazerInit(Transform transform, int x, int y)
@@ -171,6 +172,7 @@ public class CameraAttackPattern :MonoBehaviour
     public void TantacleAttack()
     {
         TantacleInit(Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));
+        Managers.Sound.Play("Effects/Tantacle01", Define.Sound.Effect, 1.0f, 1.0f);
     }
     
     private void TantacleInit(int x, int y)
