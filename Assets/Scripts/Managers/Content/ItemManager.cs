@@ -17,7 +17,7 @@ public class ItemManager
 
         Managers.Field.ScaleByRatio(item, x, y);
         Managers.Field.GetFieldInfo(x, y).spawnable = false;
-
+        Managers.Sound.Play("Effects/ItemSpawn", Define.Sound.Effect, 1.0f, 0.2f);
         return item;
     }
     

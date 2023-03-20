@@ -15,7 +15,14 @@ public class PlayerStat : MonoBehaviour
         //GetComponent<HpBarUpdater>().GetSliderComponent().maxValue = MaxHP;
 
     }
-
+    private void Update()
+    {
+        if(CurrentHP<=0)
+        {
+            //Managers.Game.GameOver();
+            //Managers.Scene.LoadScene("GameOver");
+        }
+    }
     public void FillHp(float mount)
     {
         CurrentHP += mount;

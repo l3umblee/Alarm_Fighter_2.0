@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
                     this.transform.position = Managers.Field.GetGrid(moveX, moveY).transform.position;
                     currentX = moveX;
                     currentY = moveY;
-                    Managers.Sound.Play("Effects/Move04", Define.Sound.Effect, 1.0f, 0.2f);
+                    Managers.Sound.Play("Effects/Move06", Define.Sound.Effect, 1.0f, 1.0f);
                 }
             }
         }
