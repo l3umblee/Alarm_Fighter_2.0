@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager
 {
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
-
+    
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
     //MP3 Player -> AudioSource
     //MP3 À½¿ø   -> AudioClip
@@ -52,9 +53,9 @@ public class SoundManager
                 audioSource.Stop();
 
             audioSource.pitch = pitch;
-            audioSource.clip = audioClip;
-            audioSource.Play();
+            audioSource.clip = audioClip;      
             audioSource.volume = volume;
+            audioSource.Play();
         }
 
         else
@@ -67,8 +68,9 @@ public class SoundManager
             }
 
             AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
-            
+            audioSource.spatialBlend = 0.9f;
             audioSource.pitch = pitch;
+            audioSource.clip = audioClip;
             audioSource.volume = volume;
             audioSource.PlayOneShot(audioClip);
 
