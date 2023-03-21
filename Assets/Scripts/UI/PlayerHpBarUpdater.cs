@@ -7,7 +7,7 @@ public class PlayerHpBarUpdater : MonoBehaviour
 {
     private GameObject playerHpbar;
 
-    PlayerStat stat;
+    PlayerStat stat;                    //playerStat Script
     List<GameObject> hpbarLossList;
 
     public void SetPlayerHpBar(GameObject go)
@@ -26,6 +26,7 @@ public class PlayerHpBarUpdater : MonoBehaviour
         hpbarLossList.Add(playerHpbar.transform.Find("Panel/HPLoss/HPLoss5").gameObject);
     }
 
+    //checks PlayerStat script's CurrentHP and changes the PlayerHP UI
     void Update()
     {
         

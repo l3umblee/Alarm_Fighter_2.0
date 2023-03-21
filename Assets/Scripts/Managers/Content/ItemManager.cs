@@ -5,8 +5,9 @@ using UnityEngine;
 public class ItemManager
 {
     List<string> itemList;
-    GameObject pool; 
+    GameObject pool;    //@ItemSpawn(GameObject)
 
+    //spawns an item below certain grid(GameObject)
     public GameObject ItemSpawn(int x, int y)
     {
         int rand = Random.Range(0, itemList.Count);
@@ -21,6 +22,7 @@ public class ItemManager
         return item;
     }
     
+    //Destroys an item
     public void ItemDeSpawn(GameObject go)
     {
         Managers.Resource.Destroy(go);

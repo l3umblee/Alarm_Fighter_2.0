@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
             Vector3 mousePos = Input.mousePosition;
             Vector2 pos = Camera.main.ScreenToWorldPoint(mousePos);
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-
-            if(hit.collider != null)
+                
+            if (hit.collider != null)
             {
                 moveX = Managers.Field.GetIndex_X(hit.collider.gameObject);
                 moveY = Managers.Field.GetIndex_Y(hit.collider.gameObject);
@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        Vector3 a = Vector3.forward;
 
         if (Input.GetKeyDown(KeyCode.M))
         {
