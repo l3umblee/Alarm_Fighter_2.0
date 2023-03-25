@@ -14,7 +14,7 @@ public class ItemManager
         GameObject grid = Managers.Field.GetGrid(x, y);
         GameObject item = Managers.Resource.Instantiate(itemList[rand], grid.transform);
         item.GetComponent<DroppedItem>().SetGridInfo(x, y);
-
+        
 
         Managers.Field.ScaleByRatio(item, x, y);
         Managers.Field.GetFieldInfo(x, y).spawnable = false;
@@ -27,7 +27,7 @@ public class ItemManager
     {
         Managers.Resource.Destroy(go);
         pool.GetComponent<GridBaseSpawn>().ReduceItemCount();
-        Managers.Field.GetFieldInfo(go.GetComponent<DroppedItem>().x, go.GetComponent<DroppedItem>().x).spawnable = true;
+        Managers.Field.GetFieldInfo(go.GetComponent<DroppedItem>().x, go.GetComponent<DroppedItem>().y).spawnable = true;
     }
 
     public void Init()
