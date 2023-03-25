@@ -20,10 +20,13 @@ public class DroppedVaccineGun : DroppedItem
             PlayerStat stat = go.GetComponent<PlayerStat>();
             if (stat != null)
             {
+
                 Managers.Resource.Instantiate(vaccine, go.transform);//player arms the item(item instantiates below player)
                 Managers.Item.ItemDeSpawn(gameObject);               //destories the item on field
+
 
             }
         }
     }
+
 }
