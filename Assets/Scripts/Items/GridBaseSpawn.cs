@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GridBaseSpawn : MonoBehaviour
+public class GridBaseSpawn : MonoBehaviour      //below @ItemSpawn
 {
     public int maxItem = 4;
     public float delay = 10f;
 
-    int currentItem = 0;
+    int currentItem = 0;        //num of currnent items spawned in field
     double currentTime = 0;
-    // Start is called before the first frame update
-
-
 
     public void ReduceItemCount()
     {
@@ -20,8 +17,7 @@ public class GridBaseSpawn : MonoBehaviour
     }
 
 
-
-    void Update()
+    void Update()       //keeps on spawning items in the field
     {
         currentTime += Time.deltaTime;
         if (currentItem >= maxItem)
@@ -30,7 +26,7 @@ public class GridBaseSpawn : MonoBehaviour
         {
             int x, y;
             
-            CalculateLocation(out x, out y);
+            CalculateLocation(out x, out y);     //chooses an avaiable grid to spawn an item
             Managers.Item.ItemSpawn(x, y);
             currentItem += 1;
             currentTime = 0;
@@ -38,9 +34,8 @@ public class GridBaseSpawn : MonoBehaviour
 
     }
 
-
-    // Update is called once per frame
-
+    //out parameter is used when more than two return values are required
+    //in this case x and y are returned
     void CalculateLocation(out int x, out int y)
     {
         int rangeX = Managers.Field.GetWidth();

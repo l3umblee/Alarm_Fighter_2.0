@@ -23,7 +23,7 @@ public class PlayerStat : MonoBehaviour
             //Managers.Scene.LoadScene("GameOver");
         }
     }
-    public void FillHp(float mount)
+    public void FillHp(float mount)    
     {
         CurrentHP += mount;
         if (MaxHP <= CurrentHP)
@@ -31,10 +31,12 @@ public class PlayerStat : MonoBehaviour
     }
     public void FillShield(string Shield)
     {
+        //creates shield(GameObejct) below Player on scene
         this.shield = Managers.Resource.Instantiate(Shield, transform);
     }
     public void FillInvincible(string item_angle)
     {
+        //creates item_angle(GameObejct) below Player on scene
         this.item_angle = Managers.Resource.Instantiate(item_angle, transform);
     }
 

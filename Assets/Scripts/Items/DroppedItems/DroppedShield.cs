@@ -10,6 +10,7 @@ public class DroppedShield : DroppedItem
     {
         GetComponent<BoxCollider2D>().enabled = true;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject go = collision.gameObject;

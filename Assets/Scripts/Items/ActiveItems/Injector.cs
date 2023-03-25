@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Injector : MonoBehaviour
+public class Injector : MonoBehaviour   //below vaccineEffect(prefab)
 {
     private void Start()
     {
