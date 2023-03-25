@@ -25,7 +25,7 @@ public class ItemManager
     {
         Managers.Resource.Destroy(go);
         pool.GetComponent<GridBaseSpawn>().ReduceItemCount();
-        Managers.Field.GetFieldInfo(go.GetComponent<DroppedItem>().x, go.GetComponent<DroppedItem>().x).spawnable = true;
+        Managers.Field.GetFieldInfo(go.GetComponent<DroppedItem>().x, go.GetComponent<DroppedItem>().y).spawnable = true;
     }
 
     public void Init()
