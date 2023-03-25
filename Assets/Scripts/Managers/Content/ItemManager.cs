@@ -11,7 +11,7 @@ public class ItemManager
     {
         int rand = Random.Range(0, itemList.Count);
         GameObject grid = Managers.Field.GetGrid(x, y);
-        GameObject item = Managers.Resource.Instantiate(itemList[rand], grid.transform);
+        GameObject item = Managers.Resource.Instantiate(itemList[3]/*itemList[rand]*/, grid.transform);//sunho 임시수정
         item.GetComponent<DroppedItem>().SetGridInfo(x, y);
 
 
@@ -25,7 +25,7 @@ public class ItemManager
     {
         Managers.Resource.Destroy(go);
         pool.GetComponent<GridBaseSpawn>().ReduceItemCount();
-        Managers.Field.GetFieldInfo(go.GetComponent<DroppedItem>().x, go.GetComponent<DroppedItem>().x).spawnable = true;
+        Managers.Field.GetFieldInfo(go.GetComponent<DroppedItem>().x, go.GetComponent<DroppedItem>().y).spawnable = true;
     }
 
     public void Init()

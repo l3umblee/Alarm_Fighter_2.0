@@ -18,10 +18,10 @@ public class DroppedVaccineGun : DroppedItem
             PlayerStat stat = go.GetComponent<PlayerStat>();
             if (stat != null)
             {
-                Managers.Resource.Instantiate(vaccine, go.transform);
+                GameObject attack = Managers.Resource.Instantiate(vaccine, go.transform);
                 Managers.Item.ItemDeSpawn(gameObject);
-
             }
         }
     }
+
 }
