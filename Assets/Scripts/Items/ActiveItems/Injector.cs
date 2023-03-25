@@ -27,7 +27,7 @@ public class Injector : MonoBehaviour
 
     private void Update()
     {
-        effect.transform.position = Vector3.MoveTowards(effect.transform.position, target.transform.position, 20 * Time.deltaTime);
+        effect.transform.position = Vector3.MoveTowards(effect.transform.position, target.transform.position, 13 * Time.deltaTime);
 
         if (Vector3.Magnitude(effect.transform.position - target.transform.position) <= 0.001)
         {
