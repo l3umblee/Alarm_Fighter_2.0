@@ -26,7 +26,7 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
 
     private void SpawnBackGround()
     {
-
+        Managers.Resource.Instantiate("BackGrounds/SettingBackground");
     }
     private void SpawnField()
     {
@@ -35,6 +35,11 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
         {
             Managers.Field.SetField(go.GetComponent<Field>());
             Managers.Field.Init();
+        }
+        Animator[] ani = go.GetComponentsInChildren<Animator>();
+        foreach(Animator a in ani)
+        {
+            a.runtimeAnimatorController = Managers.Resource.Load<RuntimeAnimatorController>("Art/Animations/fields/SettingFieldAnimation/SettingGridAnimator");
         }
     }
     private void SpawnPlayer()
@@ -49,8 +54,7 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
     }
     private void SpawnMonster()                
     {
-        // 경로 설정 필요
-        GameObject go = Managers.Resource.Instantiate("Monsters/SettingMonster/SettingMonster_empty");
+        GameObject go = Managers.Resource.Instantiate("Monsters/SettingMonster/SettingMonster");
         if( go != null)
         {
             SpawnMonsterHpBar(go);  
@@ -65,7 +69,7 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
 
     private void SpawnMonsterHpBar(GameObject parent)
     {
-        GameObject go = Managers.Resource.Instantiate("Monsters/CameraMonster/MonsterHP");
+        GameObject go = Managers.Resource.Instantiate("Monsters/SettingMonster/MonsterHP");
         if(go != null) 
         {
             parent.GetComponent<MonsterHpBarUpdater>().monsterHPbar = go;
