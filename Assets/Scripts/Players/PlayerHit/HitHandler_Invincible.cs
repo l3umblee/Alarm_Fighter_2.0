@@ -18,6 +18,7 @@ public class HitHandler_Invincible : HitHandler
             return;
         }
 
+        //player has the Item_angle, always returns true, never process the function 
         if (!Item_angle.GetComponent<Item_angle>().Invincible())
             successor.Request();
     }
