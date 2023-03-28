@@ -30,7 +30,7 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
     }
     private void SpawnField()
     {
-        GameObject go = Managers.Resource.Instantiate("Fields/Fields");
+        GameObject go = Managers.Resource.Instantiate("Fields/Fields_Setting");
         if(go != null) 
         {
             Managers.Field.SetField(go.GetComponent<Field>());
@@ -44,10 +44,10 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
     }
     private void SpawnPlayer()
     {
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/Player");
+        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/PlayerRig");
         if(go != null) 
         {
-            go = Managers.Resource.Instantiate("Players/Player");
+            go = Managers.Resource.Instantiate("Players/PlayerRig");
             Managers.Player.SetPlayer(go.GetComponent<Player>());
             SpawnPlayerHpBar(go);
         }

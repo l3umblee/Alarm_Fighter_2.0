@@ -134,9 +134,9 @@ public class SettingAttackPattern : MonoBehaviour
 
     public void Init()
     {
-        noteBarList_1 = new List<FunctionPointer>() { Defalut1_1, Defalut1_2, Defalut1_1, Defalut1_2 };
+        noteBarList_1 = new List<FunctionPointer>() { Row1, Column1, Row2, Column2 };
         noteBarList_2 = new List<FunctionPointer>() { Agun, Rest, Agun, Rest };
-
+        noteBarList_1 = new List<FunctionPointer>() { Row2, Column1, Row3, Column3 };
         // 낫으로 공격하는 부분 추가 필요
     }
 
@@ -149,22 +149,48 @@ public class SettingAttackPattern : MonoBehaviour
         //does nothing
     }
 
-    private void Defalut1_1()
+    private void Row1()
     {
-        Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(1, 1).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
+        for (int i = 0; i < Managers.Field.GetWidth(); i++)
+        {
+            Managers.Field.GetGrid(0, i).GetComponent<Animator>().SetTrigger("Row");
+        }
     }
-    private void Defalut1_2()
+    private void Row2()
     {
-        Managers.Field.GetGrid(1, 0).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(0, 1).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(2, 1).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(1, 2).GetComponent<Animator>().SetTrigger("One");
+        for (int i = 0; i < Managers.Field.GetWidth(); i++)
+        {
+            Managers.Field.GetGrid(1, i).GetComponent<Animator>().SetTrigger("Row");
+        }
     }
-
+    private void Row3()
+    {
+        for (int i = 0; i < Managers.Field.GetWidth(); i++)
+        {
+            Managers.Field.GetGrid(2, i).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
+    private void Column1()
+    {
+        for (int i = 0; i < Managers.Field.GetHeight(); i++)
+        {
+            Managers.Field.GetGrid(i, 0).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
+    private void Column2()
+    {
+        for (int i = 0; i < Managers.Field.GetHeight(); i++)
+        {
+            Managers.Field.GetGrid(i, 1).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
+    private void Column3()
+    {
+        for (int i = 0; i < Managers.Field.GetHeight(); i++)
+        {
+            Managers.Field.GetGrid(i, 2).GetComponent<Animator>().SetTrigger("Row");
+        }
+    }
     private void Agun()
     {
         Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
@@ -192,10 +218,10 @@ public class SettingAttackPattern : MonoBehaviour
     #region Agun_Private
     private void AgunInit()
     {
-        GameObject mouth = Util.FindChild(Managers.Monster.BossMonster, "Mouth",true);
+        //GameObject mouth = Util.FindChild(Managers.Monster.BossMonster, "Mouth",true);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/SettingMonster/Effects/Agun");
-        go.transform.localPosition = mouth.transform.localPosition;
-        Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/Agun");
+
+        Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/Agun"); 
     }
     #endregion
 
