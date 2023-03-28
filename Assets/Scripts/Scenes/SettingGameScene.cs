@@ -30,6 +30,7 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
     }
     private void SpawnField()
     {
+        Managers.Resource.Instantiate("Fields/Fields_SettingDemo");
         GameObject go = Managers.Resource.Instantiate("Fields/Fields_Setting");
         if(go != null) 
         {

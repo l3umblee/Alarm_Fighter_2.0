@@ -8,6 +8,7 @@ public class SettingAttackPattern : MonoBehaviour
     public delegate void FunctionPointer();
     public List<FunctionPointer> noteBarList_1;
     public List<FunctionPointer> noteBarList_2;
+    public List<FunctionPointer> noteBarList_3;
 
     private IEnumerator coroutine;
     float del_time = 0.9f;
@@ -25,7 +26,7 @@ public class SettingAttackPattern : MonoBehaviour
 
         yield return new WaitForSeconds(0.91f);
         Special();
-
+        Init();
         yield return new WaitForSeconds(0.98f);
         Special();
 
@@ -112,7 +113,7 @@ public class SettingAttackPattern : MonoBehaviour
 
         yield return new WaitForSeconds(0.97f);//29.59
         Special();
-
+        int i = 1;
         while (true)
         {
             yield return new WaitForSeconds(del_time);
@@ -121,30 +122,34 @@ public class SettingAttackPattern : MonoBehaviour
             {
                 del_time += 0.1f;
                 GameObject go = Managers.Sound.GetCurrentBGM();
-                go.GetComponent<AudioSource>().pitch = 0.9f;
+                go.GetComponent<AudioSource>().pitch = 0.8f;
+                if(i%2==0)
+                {
+                    Middle();
+                    i++;
+                }
+                else
+                {
+                    Column2();
+                    i++;
+                }
             }
             Special();
         }
     }
 
-    private void Awake()
-    {
-        Init();
-    }
-
     public void Init()
     {
         noteBarList_1 = new List<FunctionPointer>() { Row1, Column1, Row2, Column2 };
-        noteBarList_2 = new List<FunctionPointer>() { Agun, Rest, Agun, Rest };
-        noteBarList_1 = new List<FunctionPointer>() { Row2, Column1, Row3, Column3 };
-        // 낫으로 공격하는 부분 추가 필요
+        noteBarList_2 = new List<FunctionPointer>() { Row2, Column1, Row3, Column3 };
+        noteBarList_3 = new List<FunctionPointer>() { Agun, Rest, Agun, Rest };
     }
-
+   
     private void Special()
     {
         DarkModeAttack();
     }
-    private void Rest()
+    public void Rest()
     {
         //does nothing
     }
@@ -174,23 +179,40 @@ public class SettingAttackPattern : MonoBehaviour
     {
         for (int i = 0; i < Managers.Field.GetHeight(); i++)
         {
-            Managers.Field.GetGrid(i, 0).GetComponent<Animator>().SetTrigger("Row");
+            Managers.Field.GetGrid(i, 0).GetComponent<Animator>().SetTrigger("Column");
         }
     }
     private void Column2()
     {
         for (int i = 0; i < Managers.Field.GetHeight(); i++)
         {
-            Managers.Field.GetGrid(i, 1).GetComponent<Animator>().SetTrigger("Row");
+            Managers.Field.GetGrid(i, 1).GetComponent<Animator>().SetTrigger("Column");
         }
     }
     private void Column3()
     {
         for (int i = 0; i < Managers.Field.GetHeight(); i++)
         {
-            Managers.Field.GetGrid(i, 2).GetComponent<Animator>().SetTrigger("Row");
+            Managers.Field.GetGrid(i, 2).GetComponent<Animator>().SetTrigger("Column");
         }
     }
+    private void Middle()
+    {
+        Managers.Field.GetGrid(1, 1).GetComponent<Animator>().SetTrigger("Column");
+    }
+    private void Cross()
+    {
+        for (int i = 0; i < Managers.Field.GetHeight(); i++)
+        {
+            for( int j=0;j< Managers.Field.GetWidth(); j++)
+            {
+                if (i==j)
+                    continue;
+                Managers.Field.GetGrid(i, j).GetComponent<Animator>().SetTrigger("Column");
+            }
+        }
+    }
+
     private void Agun()
     {
         Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
@@ -205,7 +227,7 @@ public class SettingAttackPattern : MonoBehaviour
         
         callOrderList.Add(noteBarList_1);
         callOrderList.Add(noteBarList_2);
-
+        callOrderList.Add(noteBarList_3);
         return callOrderList;
     }
 
@@ -213,15 +235,13 @@ public class SettingAttackPattern : MonoBehaviour
 
     public void AgunAttack() 
     { 
-        AgunInit(); 
+        AgunInit();
+        //Managers.Sound.Play("Effects/Tantacle01", Define.Sound.Effect, 1.0f, 0.01f);
     }
     #region Agun_Private
     private void AgunInit()
-    {
-        //GameObject mouth = Util.FindChild(Managers.Monster.BossMonster, "Mouth",true);
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/SettingMonster/Effects/Agun");
-
-        Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/Agun"); 
+    {     
+        GameObject go = Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/Agun");
     }
     #endregion
 
@@ -233,6 +253,29 @@ public class SettingAttackPattern : MonoBehaviour
     private void DarkModeInit()
     {
         GameObject go = Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/DarkMode");
+    }
+    #endregion
+    #region Black ThunderAttack
+    int BlackThunderNum = 0;
+    List<String> BlackThunderArray = new List<string>() { "Thunder0", "Thunder1", "Thunder2" };
+    public void BlackThunderAttack()
+    {
+        BlackThunderInit(Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));
+        //Managers.Sound.Play("Effects/Tantacle01", Define.Sound.Effect, 1.0f, 0.01f);
+    }
+
+    private void BlackThunderInit(int x, int y)
+    {
+        GameObject go = Managers.Resource.Load<GameObject>($"Prefabs/Monsters/SettingMonster/Effects/{BlackThunderArray[BlackThunderNum]}");
+        GameObject Thunder = Instantiate<GameObject>(go);
+        Managers.Field.ScaleByRatio(Thunder, x, y);
+        FieldInfo fieldInfo = Managers.Field.GetFieldInfo(x, y);
+        Thunder.transform.localScale = new Vector3(1.5f, 2.0f, 1f) * fieldInfo.ratio;
+        Thunder.transform.position = fieldInfo.grid.transform.position;
+
+        BlackThunderNum++;
+        if (BlackThunderNum > 2)
+            BlackThunderNum = 0;
     }
     #endregion
     #endregion
