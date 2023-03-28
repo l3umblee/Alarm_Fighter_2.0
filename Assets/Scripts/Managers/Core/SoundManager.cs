@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager
 {
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
-
+    
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
     //MP3 Player -> AudioSource
     //MP3 À½¿ø   -> AudioClip
     //°ü°´(±Í)   -> AudioListener
+
+    GameObject CurrentBGM;
+    GameObject CurrentEffect;
 
     public void Init()
     {
@@ -25,9 +29,34 @@ public class SoundManager
                 GameObject go = new GameObject { name = soundNames[i] };
                 _audioSources[i] = go.AddComponent<AudioSource>();
                 go.transform.parent = root.transform;
+                if(i == 0) { SetCurrentBGM(go); }
+                else if(i == 1) { SetCurrentEffect(go); }
             }
 
             _audioSources[(int)Define.Sound.Bgm].loop = true;
+        }
+    }
+
+    private void SetCurrentBGM(GameObject go) {  CurrentBGM=go; }
+    private void SetCurrentEffect(GameObject go) {  CurrentEffect=go; }
+    public GameObject GetCurrentBGM() 
+    {
+        if(CurrentBGM != null)
+            return CurrentBGM; 
+        else 
+        {
+            Debug.Log("no current BGM");
+            return null; 
+        }
+    }
+    public GameObject GetCurrentEffect() 
+    {
+        if (CurrentEffect != null)
+            return CurrentEffect;
+        else
+        {
+            Debug.Log("no current Effect");
+            return null;
         }
     }
 
@@ -52,9 +81,9 @@ public class SoundManager
                 audioSource.Stop();
 
             audioSource.pitch = pitch;
-            audioSource.clip = audioClip;
-            audioSource.Play();
+            audioSource.clip = audioClip;      
             audioSource.volume = volume;
+            audioSource.Play();
         }
 
         else
@@ -67,7 +96,9 @@ public class SoundManager
             }
 
             AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
+            audioSource.spatialBlend = 0.9f;
             audioSource.pitch = pitch;
+            audioSource.clip = audioClip;
             audioSource.volume = volume;
             audioSource.PlayOneShot(audioClip);
 

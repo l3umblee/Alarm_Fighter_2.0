@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
             Vector3 mousePos = Input.mousePosition;
             Vector2 pos = Camera.main.ScreenToWorldPoint(mousePos);
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-
-            if(hit.collider != null)
+                
+            if (hit.collider != null)
             {
                 moveX = Managers.Field.GetIndex_X(hit.collider.gameObject);
                 moveY = Managers.Field.GetIndex_Y(hit.collider.gameObject);
@@ -37,10 +37,11 @@ public class Player : MonoBehaviour
                     this.transform.position = Managers.Field.GetGrid(moveX, moveY).transform.position;
                     currentX = moveX;
                     currentY = moveY;
-                    Managers.Sound.Play("Effects/Move04", Define.Sound.Effect, 1.0f, 0.2f);
+                    Managers.Sound.Play("Effects/Move06", Define.Sound.Effect, 1.0f, 1.0f);
                 }
             }
         }
+        Vector3 a = Vector3.forward;
 
         if (Input.GetKeyDown(KeyCode.M))
         {
