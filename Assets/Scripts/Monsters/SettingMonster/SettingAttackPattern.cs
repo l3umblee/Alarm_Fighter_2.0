@@ -219,6 +219,7 @@ public class SettingAttackPattern : MonoBehaviour
         Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
+        Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/AgunCollider");
     }
 
     public List<List<FunctionPointer>> CreateCallOrderList()
