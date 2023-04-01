@@ -135,7 +135,7 @@ public class SettingAttackPattern : MonoBehaviour
                 }
             }
             Special();
-            if (Managers.Monster.BossMonster.GetComponent<MonsterHpBarUpdater>().Die) { StopAllCoroutines(); }
+            if (Managers.Monster.BossMonster.GetComponent<MonsterHpBarUpdater>().die) { StopAllCoroutines(); }
         }
         
     }
