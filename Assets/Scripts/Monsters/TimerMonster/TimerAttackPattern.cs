@@ -8,8 +8,6 @@ public class TimerAttackPattern : MonoBehaviour
     public List<FunctionPointer> noteBarList_1;
     public List<FunctionPointer> noteBarList_2;
     public List<FunctionPointer> noteBarList_3;
-    public List<FunctionPointer> noteBarList_4;
-
 
     private void Awake()
     {
@@ -18,12 +16,12 @@ public class TimerAttackPattern : MonoBehaviour
 
     public void Init()
     {
-        noteBarList_1 = new List<FunctionPointer>() { Rest, Defalut1_1, Rest, Rest, Rest, Defalut1_2, Rest, Rest, Rest};
-        noteBarList_2 = new List<FunctionPointer>() { Defalut1_1, Defalut1_2, Defalut1_1, Defalut1_2, One, Row0, Row1, Row2, Row3,
-        Rest, Defalut1_1, Defalut1_2, Defalut1_1, Defalut1_2, One, Row0, Row1, Row2, Row3,
-        Rest, Defalut1_1, Defalut1_2, Defalut1_1, Defalut1_2, One, Row0, Row1, Row2, Row3};
-        noteBarList_3 = new List<FunctionPointer>() {Defalut1_1, Defalut1_2, One, One, Defalut1_1, Defalut1_2, One, One, Row0, Row1, Row2, Row3};
+        noteBarList_1 = new List<FunctionPointer>() { Rest, One, Rest, Rest, Rest, One, Rest, Rest, Rest};
+        noteBarList_2 = new List<FunctionPointer>() { One, Rest, One, Rest, One, Rest , One, Rest, One, Rest, One, Rest , One, Rest, One, Rest, One, Rest
+         ,One, Rest, One, Rest, One, Rest,  One, Rest};
+        noteBarList_3 = new List<FunctionPointer>() {One, Rest, One, Rest, One, Rest, One, Rest, One, Rest, Row0, Row1, Row2, Row3};
     }
+
     private void Rest()
     {
         //does nothing
@@ -31,12 +29,35 @@ public class TimerAttackPattern : MonoBehaviour
 
     private void One()
     {
-        int xrand = (int)Random.Range(0, 3);
+        int xrand = (int)Random.Range(1, 3);
         int yrand = (int)Random.Range(0, 3);
+        if(xrand == 1 && yrand == 0)
+        {
+            Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("timer_oneattack10");
+        }
+        else if(xrand == 1 && yrand == 1)
+        {
+            Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("timer_oneattack11");
+        }
+        else if (xrand == 1 && yrand == 2)
+        {
+            Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("timer_oneattack12");
+        }
+        else if (xrand == 2 && yrand == 0)
+        {
+            Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("timer_oneattack20");
+        }
+        else if (xrand == 2 && yrand == 1)
+        {
+            Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("timer_oneattack21");
+        }
+        else if (xrand == 2 && yrand == 2)
+        {
+            Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("timer_oneattack22");
+        }
         Managers.Field.GetGrid(xrand, yrand).GetComponent<Animator>().SetTrigger("TimerOne");
     }
 
-    // field의 애니메이션은 몬스터마다 알맞은 애니메이션 이름으로 바꿔주어야 함. (지금은 이미 만들어진 카메라 몬스터 촉수 One으로 통일)
     private void Defalut1_1()
     {
         Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("TimerOne");
@@ -54,8 +75,6 @@ public class TimerAttackPattern : MonoBehaviour
     }
     private void Row0()
     {
-        // 음파 공격 용 Rest 
-        One();
         Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("timer_hand_idle2");
     }
     private void Row1()
@@ -92,19 +111,33 @@ public class TimerAttackPattern : MonoBehaviour
 
     // attack pattern 집어넣기
     #region timeattackpattern
-    public void RingOneAttack()
+    public void TimerAttack()
     {
-        // 콜라이더가 들어간 gameobject가 생성될 것임.
+        TimerAttackInit(Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));
     }
 
-    public void RingRowAttack()
+    private void TimerAttackInit(int x, int y)
     {
-        StartCoroutine(Ringing());
+        GameObject go = Managers.Resource.Load<GameObject>($"Prefabs/Monsters/TimerMonster/Effects/TimerSonic");
+        GameObject sonic = Instantiate(go);
+        FieldInfo fieldInfo = Managers.Field.GetFieldInfo(x, y);
+        sonic.transform.position = fieldInfo.grid.transform.position;
     }
 
-    private IEnumerator Ringing()
+    public void TimerRowAttack()
     {
-        yield return new WaitForSeconds(0.2f);
+        TimerRowAttackInit(Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));
+    }
+
+    private void TimerRowAttackInit(int x, int y)
+    {
+        GameObject go = Managers.Resource.Load<GameObject>($"Prefabs/Monsters/TimerMonster/Effects/TimerSonic");
+        GameObject sonic = Instantiate(go);
+        FieldInfo fieldInfo = Managers.Field.GetFieldInfo(x, y);
+
+        GameObject effect = Managers.Resource.Load<GameObject>("Monsters/TimerMonster/Effects/TimerSonicEffect");
+
+        sonic.transform.position = fieldInfo.grid.transform.position;
     }
     #endregion
 }
