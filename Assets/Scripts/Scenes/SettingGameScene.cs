@@ -64,7 +64,7 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
     }   
     private void SpawnPlayerHpBar(GameObject parent)
     {
-        GameObject go = Managers.Resource.Instantiate("Players/PlayerHP");
+        GameObject go = Managers.Resource.Instantiate("Players/PlayerHP_Setting");
         parent.GetComponent<PlayerHpBarUpdater>().SetPlayerHpBar(go);
     }
 

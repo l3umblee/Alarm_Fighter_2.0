@@ -219,6 +219,7 @@ public class SettingAttackPattern : MonoBehaviour
         Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
+        Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/AgunCollider");
     }
 
     public List<List<FunctionPointer>> CreateCallOrderList()
@@ -238,6 +239,11 @@ public class SettingAttackPattern : MonoBehaviour
         AgunInit();
         //Managers.Sound.Play("Effects/Tantacle01", Define.Sound.Effect, 1.0f, 0.01f);
     }
+    public void AgunFieldAttack()
+    {
+        Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/AgunFieldAttack");
+
+    }
     #region Agun_Private
     private void AgunInit()
     {     
@@ -255,7 +261,7 @@ public class SettingAttackPattern : MonoBehaviour
         GameObject go = Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/DarkMode");
     }
     #endregion
-    #region Black ThunderAttack
+
     int BlackThunderNum = 0;
     List<String> BlackThunderArray = new List<string>() { "Thunder0", "Thunder1", "Thunder2" };
     public void BlackThunderAttack()
@@ -263,7 +269,7 @@ public class SettingAttackPattern : MonoBehaviour
         BlackThunderInit(Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));
         //Managers.Sound.Play("Effects/Tantacle01", Define.Sound.Effect, 1.0f, 0.01f);
     }
-
+    #region Black ThunderAttack Private
     private void BlackThunderInit(int x, int y)
     {
         GameObject go = Managers.Resource.Load<GameObject>($"Prefabs/Monsters/SettingMonster/Effects/{BlackThunderArray[BlackThunderNum]}");
