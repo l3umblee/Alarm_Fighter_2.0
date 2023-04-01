@@ -13,6 +13,7 @@ public class MonsterHpBarUpdater : MonoBehaviour
 
     private Image hp;
     private float currentTime;
+
     void Start()
     {
         /*
@@ -34,6 +35,7 @@ public class MonsterHpBarUpdater : MonoBehaviour
         {
             currentTime = 0;
             Debug.Log("Game Clear");
+
             //Managers.Game.StageClear();
             //Managers.Scene.LoadScene("NextGameScene");
         }

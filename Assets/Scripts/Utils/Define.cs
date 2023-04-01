@@ -10,4 +10,18 @@ public class Define
         Effect,
         MaxCount,
     }
+    public enum SceneOrder
+    {
+        TimeScene,
+        CameraScene,
+        NavigatorScene,
+        MassageScene,
+        SettingScene,
+
+        //FolderScene,
+        //CallScene,
+
+        //WeatherScene,
+        //DiliveryScene,
+    }
 }

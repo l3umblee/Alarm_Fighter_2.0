@@ -7,7 +7,7 @@ public abstract class BaseScene : MonoBehaviour     //모든 씬 script가 상속받는 
 {
     [SerializeField]
     protected string soundBgmName;                  //해당 씬의 BGM 이름
-    
+
     private void Awake()
     {
         Init();
