@@ -25,8 +25,8 @@ Transform:
   m_GameObject: {fileID: 1404974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.75, y: -1.44, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1905649468}
   m_Father: {fileID: 876739777503339438}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 876739777503339438}
   - component: {fileID: 5175590147606198642}
   m_Layer: 0
-  m_Name: "\uBE44\uB458\uAE30 \uBC30\uACBD"
+  m_Name: MessageBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
