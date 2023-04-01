@@ -10,16 +10,17 @@ public class Door : MonoBehaviour
     public void SetName(string name) { SceneName = name; }
     void Start()
     {
-        coroutine = MyFunction(SceneName);
+        coroutine = MyFunction();
         StartCoroutine(coroutine);
-
+        Managers.Sound.Play("Effects/Door");
     }
 
-    private IEnumerator MyFunction(string name)
+    private IEnumerator MyFunction()
     {
-        yield return new WaitForSeconds(3.27f);//finish animation time
+        yield return new WaitForSeconds(3.0f);//finish animation time
         StopCoroutine(coroutine);
-        Managers.Scene.LoadScene(name);
+        if(SceneName != null)
+            Managers.Scene.LoadScene(SceneName);
     }
 
 }

@@ -135,7 +135,7 @@ public class SettingAttackPattern : MonoBehaviour
                 }
             }
             Special();
-            if (Managers.Monster.BossMonster.GetComponent<MonsterHpBarUpdater>().die) { StopAllCoroutines(); }
+            if (!Managers.Monster.IsAlive()) { StopAllCoroutines(); }
         }
         
     }
@@ -217,7 +217,6 @@ public class SettingAttackPattern : MonoBehaviour
 
     private void Agun()
     {
-        Debug.Log("animation Agun");
         Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
@@ -228,7 +227,6 @@ public class SettingAttackPattern : MonoBehaviour
     {
         AgunAttack();
         AgunFieldAttack();
-        Debug.Log("instantiate");
     }
 
     public List<List<FunctionPointer>> CreateCallOrderList()

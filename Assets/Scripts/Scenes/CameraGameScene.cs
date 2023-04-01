@@ -18,6 +18,8 @@ public class CameraGameScene : BaseScene//At the beginning of the this scene, re
         SpawnMonster();       
         SpawnPlayer();
         SpawnItemSpawner();
+        CheckingGame();
+
     }
     public void Update()
     {
@@ -67,6 +69,7 @@ public class CameraGameScene : BaseScene//At the beginning of the this scene, re
         {
             SpawnMonsterHpBar(go);
             Managers.Monster.BossMonster = go;
+            Managers.Monster.Init(Define.GameSceneOrder.CameraScene_main);
         }
     }   
     private void SpawnPlayerHpBar(GameObject parent)
