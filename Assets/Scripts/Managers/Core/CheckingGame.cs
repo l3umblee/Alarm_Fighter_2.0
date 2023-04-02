@@ -15,24 +15,24 @@ public class CheckingGame : MonoBehaviour
     {
         if(!Managers.Player.IsAlive()&&!HasBeenCalled)
         {
-            GameObject go = Managers.Resource.Instantiate("UI/Door");
+            GameObject go = Managers.Resource.Instantiate("UI/DoorClose");
             go.GetComponent<Door>().SetName("Map");
             HasBeenCalled = true;
         }
         else if(!Managers.Monster.IsAlive()&&!HasBeenCalled)
         {
-            GameObject go = Managers.Resource.Instantiate("UI/Door");
+            GameObject go = Managers.Resource.Instantiate("UI/DoorClose");
             if ((Managers.Monster.CurrentMonsterSceneName() + 1) != Define.GameSceneOrder.Finished)
             {
                 go.GetComponent<Door>().SetName((Managers.Monster.CurrentMonsterSceneName() + 1).ToString());
+                HasBeenCalled = true;
             }
             else
             {
                 go.GetComponent<Door>().SetName("FinishedScene");
+                HasBeenCalled = true;
             }
-            Managers.Clear();
-            Managers.Sound.Clear();
-            HasBeenCalled = true;
+            
         }
     }
 }

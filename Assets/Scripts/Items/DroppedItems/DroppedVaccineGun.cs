@@ -18,6 +18,7 @@ public class DroppedVaccineGun : DroppedItem
         if (go.CompareTag("Player"))
         {
             PlayerStat stat = go.GetComponent<PlayerStat>();
+            Util.FindChild(go, "PlayerEach").GetComponent<Animator>().SetTrigger("attack");
             if (stat != null)
             {
 

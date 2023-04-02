@@ -20,7 +20,11 @@ public class Door : MonoBehaviour
         yield return new WaitForSeconds(3.0f);//finish animation time
         StopCoroutine(coroutine);
         if(SceneName != null)
+        {
+            Managers.Sound.Clear();
+            Managers.Clear();
             Managers.Scene.LoadScene(SceneName);
+        }
     }
 
 }

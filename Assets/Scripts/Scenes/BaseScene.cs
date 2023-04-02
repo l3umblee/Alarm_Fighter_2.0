@@ -30,4 +30,9 @@ public abstract class BaseScene : MonoBehaviour     //모든 씬 script가 상속받는 
     {
         Managers.Resource.Instantiate("Manager/CheckingGame");
     }
+    protected void SpawnDoorOpen()
+    {
+        Managers.Resource.Instantiate("UI/DoorOpen");
+
+    }
 }

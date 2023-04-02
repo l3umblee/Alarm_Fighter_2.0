@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     private int currentX, currentY;
     private int moveX, moveY;
-
+    private Animator anim;
     public int GetPlayerCurrentIndX() { return currentX; }
     public int GetPlayerCurrentIndY() {  return currentY; }
 
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
         currentY = Managers.Field.GetHeight() / 2;
         this.transform.position = Managers.Field.GetGrid(currentX, currentY).transform.position;
         Managers.Field.ScaleByRatio(gameObject, currentX, currentY);
+        anim=Util.FindChild(gameObject, "PlayerEach").GetComponent<Animator>();
     }
 
     void Update()
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
                     this.transform.position = Managers.Field.GetGrid(moveX, moveY).transform.position;
                     currentX = moveX;
                     currentY = moveY;
+                    anim.GetComponent<Animator>().SetTrigger("move");
                     Managers.Sound.Play("Effects/Move06", Define.Sound.Effect, 1.0f, 1.0f);
                 }
             }

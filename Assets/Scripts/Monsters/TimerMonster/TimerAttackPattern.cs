@@ -127,6 +127,7 @@ public class TimerAttackPattern : MonoBehaviour
     public void TimerRowAttack()
     {
         TimerRowAttackInit(Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));
+        Managers.Sound.Play("TimerMonster/WaveEffect", Define.Sound.Effect, 1.0f, 0.1f);
     }
 
     private void TimerRowAttackInit(int x, int y)
