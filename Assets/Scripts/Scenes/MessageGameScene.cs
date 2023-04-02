@@ -51,7 +51,7 @@ public class MessageGameScene : BaseScene//At the beginning of the this scene, r
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Players/PlayerRig");
         if (go != null)
         {
-            go = Managers.Resource.Instantiate("Players/Player");
+            go = Managers.Resource.Instantiate("Players/PlayerRig");
             Managers.Player.SetPlayer(go.GetComponent<Player>());
             SpawnPlayerHpBar(go);
         }
