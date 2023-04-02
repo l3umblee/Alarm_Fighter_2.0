@@ -8,6 +8,10 @@ public abstract class BaseScene : MonoBehaviour     //모든 씬 script가 상속받는 
     [SerializeField]
     protected string soundBgmName;                  //해당 씬의 BGM 이름
 
+    protected void SetBpm(int bpm)
+    {
+        Managers.Bpm.BPM = bpm;
+    }
     private void Awake()
     {
         Init();
@@ -33,6 +37,5 @@ public abstract class BaseScene : MonoBehaviour     //모든 씬 script가 상속받는 
     protected void SpawnDoorOpen()
     {
         Managers.Resource.Instantiate("UI/DoorOpen");
-
     }
 }

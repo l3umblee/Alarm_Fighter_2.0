@@ -15,10 +15,8 @@ public class BpmManager
     public int BPM
     {
         get { return bpm; }
-        private set
-        {
-            bpm = value;
-        }
+        set { bpm = value; }
+
     }
 
     //Activates BehaveAction every 60d / bpm seconds

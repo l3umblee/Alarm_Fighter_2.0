@@ -18,6 +18,8 @@ public class MessageGameScene : BaseScene//At the beginning of the this scene, r
         SpawnMonster();
         SpawnPlayer();
         SpawnItemSpawner();
+        CheckingGame();
+        SpawnDoorOpen();
     }
     public void Update()
     {
@@ -63,6 +65,7 @@ public class MessageGameScene : BaseScene//At the beginning of the this scene, r
         {
             SpawnMonsterHpBar(go);
             Managers.Monster.BossMonster = go;
+            Managers.Monster.Init(Define.GameSceneOrder.MessageScene_main);
         }
     }
     private void SpawnPlayerHpBar(GameObject parent)

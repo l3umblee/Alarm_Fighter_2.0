@@ -14,8 +14,8 @@ public class Define
     {
         TimeScene_main,
         CameraScene_main,
-        //NavigatorScene_main,
-        //MassageScene_main,
+        NavigatorScene_main,
+        MessageScene_main,
         SettingScene_main,
         Finished
         //FolderScene,
