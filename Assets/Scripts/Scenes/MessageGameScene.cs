@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerGameScene : BaseScene//At the beginning of the this scene, responsible for the essential spawn.
+public class MessageGameScene : BaseScene//At the beginning of the this scene, responsible for the essential spawn.
 {
     [SerializeField] GameObject backGround;
     [SerializeField] GameObject BossMonster;
@@ -18,8 +18,6 @@ public class TimerGameScene : BaseScene//At the beginning of the this scene, res
         SpawnMonster();
         SpawnPlayer();
         SpawnItemSpawner();
-        CheckingGame();
-
     }
     public void Update()
     {
@@ -28,10 +26,10 @@ public class TimerGameScene : BaseScene//At the beginning of the this scene, res
 
     private void SpawnBackGround()
     {
-        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/BackGrounds/TimerBackground");
+        GameObject go = Managers.Resource.Load<GameObject>("Prefabs/BackGrounds/MessageBackground/MessageBackground");
         if (go != null)
         {
-            go = Managers.Resource.Instantiate("BackGrounds/TimerBackground");
+            go = Managers.Resource.Instantiate("BackGrounds/MessageBackground/MessageBackground");
         }
     }
     private void SpawnField()
@@ -44,7 +42,7 @@ public class TimerGameScene : BaseScene//At the beginning of the this scene, res
             Animator[] ani = go.GetComponentsInChildren<Animator>();
             foreach(Animator a in ani)
             {
-                a.runtimeAnimatorController = Managers.Resource.Load<RuntimeAnimatorController>("Art/Animations/Fields/TimerFieldAnimation/TimerGridAnimator");
+                a.runtimeAnimatorController = Managers.Resource.Load<RuntimeAnimatorController>("Art/Animations/Fields/MessageFieldAnimation/MessageGridAnimator");
             }
         }
     }
@@ -60,12 +58,11 @@ public class TimerGameScene : BaseScene//At the beginning of the this scene, res
     }
     private void SpawnMonster()
     {
-        GameObject go = Managers.Resource.Instantiate("Monsters/TimerMonster/TimerMonster");
+        GameObject go = Managers.Resource.Instantiate("Monsters/MessageMonster/MessageMonster");
         if (go != null)
         {
             SpawnMonsterHpBar(go);
             Managers.Monster.BossMonster = go;
-            Managers.Monster.Init(Define.GameSceneOrder.TimeScene_main);//sunho 0402 add
         }
     }
     private void SpawnPlayerHpBar(GameObject parent)
