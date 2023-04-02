@@ -135,7 +135,9 @@ public class SettingAttackPattern : MonoBehaviour
                 }
             }
             Special();
+            if (!Managers.Monster.IsAlive()) { StopAllCoroutines(); }
         }
+        
     }
 
     public void Init()
@@ -219,7 +221,12 @@ public class SettingAttackPattern : MonoBehaviour
         Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
-        Managers.Resource.Instantiate("Monsters/SettingMonster/Effects/AgunCollider");
+        Invoke("Instantiate_Agun", 0.25f);
+    }
+    private void Instantiate_Agun()
+    {
+        AgunAttack();
+        AgunFieldAttack();
     }
 
     public List<List<FunctionPointer>> CreateCallOrderList()

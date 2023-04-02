@@ -18,6 +18,8 @@ public class TimerGameScene : BaseScene//At the beginning of the this scene, res
         SpawnMonster();
         SpawnPlayer();
         SpawnItemSpawner();
+        CheckingGame();
+
     }
     public void Update()
     {
@@ -63,6 +65,7 @@ public class TimerGameScene : BaseScene//At the beginning of the this scene, res
         {
             SpawnMonsterHpBar(go);
             Managers.Monster.BossMonster = go;
+            Managers.Monster.Init(Define.GameSceneOrder.TimeScene_main);//sunho 0402 add
         }
     }
     private void SpawnPlayerHpBar(GameObject parent)

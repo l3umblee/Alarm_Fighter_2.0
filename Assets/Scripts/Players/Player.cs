@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0)&&Managers.Player.IsAlive())
         {
             Vector3 mousePos = Input.mousePosition;
             Vector2 pos = Camera.main.ScreenToWorldPoint(mousePos);
