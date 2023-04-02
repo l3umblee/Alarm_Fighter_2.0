@@ -43,6 +43,11 @@ public class CameraGameScene : BaseScene//At the beginning of the this scene, re
         {
             Managers.Field.SetField(go.GetComponent<Field>());
             Managers.Field.Init();
+            Animator[] ani = go.GetComponentsInChildren<Animator>();
+            foreach (Animator a in ani)
+            {
+                a.runtimeAnimatorController = Managers.Resource.Load<RuntimeAnimatorController>("Art/Animations/Fields/CameraFieldAnimation/CameraGridAnimator");
+            }
         }
     }
     private void SpawnPlayer()
