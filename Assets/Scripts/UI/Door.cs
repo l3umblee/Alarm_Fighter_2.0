@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
     {
         coroutine = MyFunction();
         StartCoroutine(coroutine);
-        Managers.Sound.Play("Effects/Door");
+        Managers.Sound.Play("Effects/Door", Define.Sound.Effect, 1.0f, 0.1f);
     }
 
     private IEnumerator MyFunction()

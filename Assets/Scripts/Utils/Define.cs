@@ -17,7 +17,8 @@ public class Define
         NavigationScene_main,//HP 100
         MessageScene_main,//120
         SettingScene_main,//120
-        Finished
+        Map,
+        //Finished
         //FolderScene,
         //CallScene,
 
