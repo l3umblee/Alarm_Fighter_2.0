@@ -50,7 +50,6 @@ public class MessageAttackPattern : MonoBehaviour
             Managers.Field.GetGrid(rowInd, i).GetComponent<Animator>().SetTrigger("MessageRow");
         }
         Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("Message_WingAttack");
-        Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("FeatherFly");
     }
  
     public List<List<FunctionPointer>> CreateCallOrderList()
