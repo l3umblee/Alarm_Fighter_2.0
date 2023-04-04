@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SettingScene_main.unity
     guid: a3fee0e9c5a258240a5ac2a82af086ac
   - enabled: 1
-    path: Assets/Scenes/FinishedScene.unity
-    guid: 3535ebb8a7837694ba63f3dab98b7455
-  - enabled: 1
     path: Assets/Scenes/MessageScene_main.unity
     guid: 123248993e524fe419272b9628a600d4
   - enabled: 1
