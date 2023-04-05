@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterHPbar: {fileID: 0}
-  playTime: 5
+  playTime: 120
 --- !u!114 &5393660359241696308
 MonoBehaviour:
   m_ObjectHideFlags: 0

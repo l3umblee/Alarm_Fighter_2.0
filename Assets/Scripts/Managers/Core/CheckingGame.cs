@@ -22,14 +22,14 @@ public class CheckingGame : MonoBehaviour
         else if(!Managers.Monster.IsAlive()&&!HasBeenCalled)
         {
             GameObject go = Managers.Resource.Instantiate("UI/DoorClose");
-            if ((Managers.Monster.CurrentMonsterSceneName() + 1) != Define.GameSceneOrder.Finished)
+            if ((Managers.Monster.CurrentMonsterSceneName() + 1) != Define.GameSceneOrder.Map)
             {
                 go.GetComponent<Door>().SetName((Managers.Monster.CurrentMonsterSceneName() + 1).ToString());
                 HasBeenCalled = true;
             }
             else
             {
-                go.GetComponent<Door>().SetName("FinishedScene");
+                go.GetComponent<Door>().SetName("Map");
                 HasBeenCalled = true;
             }
             

@@ -64,7 +64,7 @@ public class NavigationGameScene : BaseScene//At the beginning of the this scene
         {
             SpawnMonsterHpBar(go);
             Managers.Monster.BossMonster = go;
-            Managers.Monster.Init(Define.GameSceneOrder.NavigatorScene_main);
+            Managers.Monster.Init(Define.GameSceneOrder.NavigationScene_main);
         }
     }
     private void SpawnPlayerHpBar(GameObject parent)

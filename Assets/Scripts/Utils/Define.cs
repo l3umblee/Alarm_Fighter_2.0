@@ -12,12 +12,13 @@ public class Define
     }
     public enum GameSceneOrder
     {
-        TimeScene_main,
-        CameraScene_main,
-        NavigatorScene_main,
-        MessageScene_main,
-        SettingScene_main,
-        Finished
+        TimeScene_main,//120
+        CameraScene_main,//120
+        NavigationScene_main,//HP 100
+        MessageScene_main,//120
+        SettingScene_main,//120
+        Map,
+        //Finished
         //FolderScene,
         //CallScene,
 
