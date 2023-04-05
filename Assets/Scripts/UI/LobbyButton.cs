@@ -6,7 +6,7 @@ public class LobbyButton : MonoBehaviour
 {
     public void OnClick()
     {
-        Managers.Scene.LoadScene("TimeScene_main");
-        Debug.Log("Clicked!");
+        Managers.Scene.Clear();
+        Managers.Scene.LoadScene(Define.GameSceneOrder.TimeScene_main.ToString());        
     }
 }

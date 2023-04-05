@@ -13,6 +13,7 @@ public class LobbyScene : BaseScene
     {
         base.Init();
         SpawnDoorOpenUI();
+        SoundBgmPlay();
     }
     
     private void SpawnDoorOpenUI()
