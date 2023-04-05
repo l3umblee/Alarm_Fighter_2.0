@@ -24,5 +24,6 @@ public class Define
 
         //WeatherScene,
         //DiliveryScene,
+        Count,
     }
 }

@@ -9,4 +9,18 @@ public class LobbyButton : MonoBehaviour
         Managers.Scene.Clear();
         Managers.Scene.LoadScene(Define.GameSceneOrder.TimeScene_main.ToString());        
     }
+
+    public void ClickQuit()
+    {
+        Managers.Game.QuitGame();
+    }
+    public void ClickScan()
+    {
+        GetComponent<LobbyUI>().SetState((int)LobbyState.Scan);
+    }
+
+    public void LoadStage(Define.GameSceneOrder stage)
+    {
+        //
+    }
 }
