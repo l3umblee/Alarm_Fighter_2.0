@@ -6,22 +6,32 @@ public class PlayerStat : MonoBehaviour
 {
     public float MaxHP;
     public float CurrentHP;
+    private IEnumerator coroutine;
+    Animator anim;
     GameObject shield;
     GameObject item_angle;
     void Start()
     {
-        //MaxHP = 10;
-        //CurrentHP = 10;
-        //GetComponent<HpBarUpdater>().GetSliderComponent().maxValue = MaxHP;
+        anim = Util.FindChild(gameObject,"PlayerEach").GetComponent<Animator>();
 
     }
     private void Update()
     {
-        if(CurrentHP<=0)
+        if(CurrentHP<=0&&Managers.Monster.IsAlive())
         {
-            //Managers.Game.GameOver();
-            //Managers.Scene.LoadScene("GameOver");
+            coroutine = DieAnimation();
+            StartCoroutine(coroutine);
         }
+    }
+    private IEnumerator DieAnimation()
+    {
+        yield return new WaitForSeconds(1.0f);//animation time
+        //Managers.Sound.Play("Effect/die");
+        anim.GetComponent<Animator>().SetTrigger("die");
+        yield return new WaitForSeconds(0.5f);//animation time
+        StopAllCoroutines();
+        Managers.Player.SetAlive(false);
+        CurrentHP = -1000f;
     }
     public void FillHp(float mount)    
     {

@@ -7,7 +7,11 @@ public abstract class BaseScene : MonoBehaviour     //모든 씬 script가 상속받는 
 {
     [SerializeField]
     protected string soundBgmName;                  //해당 씬의 BGM 이름
-    
+
+    protected void SetBpm(int bpm)
+    {
+        Managers.Bpm.BPM = bpm;
+    }
     private void Awake()
     {
         Init();
@@ -25,5 +29,13 @@ public abstract class BaseScene : MonoBehaviour     //모든 씬 script가 상속받는 
     protected void SoundBgmPlay()
     {
         Managers.Sound.Play(soundBgmName, Define.Sound.Bgm,1.0f,0.2f);
+    }
+    protected void CheckingGame()//if -ing game, player alive or monster alive checking manager
+    {
+        Managers.Resource.Instantiate("Manager/CheckingGame");
+    }
+    protected void SpawnDoorOpen()
+    {
+        Managers.Resource.Instantiate("UI/DoorOpen");
     }
 }

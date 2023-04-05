@@ -969,6 +969,9 @@ GameObject:
   - component: {fileID: 7720426825735196080}
   - component: {fileID: 7720426825735196082}
   - component: {fileID: 7720426825735196045}
+  - component: {fileID: -5937697688335209290}
+  - component: {fileID: 5393660359241696308}
+  - component: {fileID: -2153174721432451907}
   m_Layer: 0
   m_Name: MessageMonster
   m_TagString: Untagged
@@ -1040,6 +1043,44 @@ SortingGroup:
   m_SortingLayerID: -1184195479
   m_SortingLayer: 2
   m_SortingOrder: 0
+--- !u!114 &-5937697688335209290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7720426825735196081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64fef730b788634badda68f3888c6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterHPbar: {fileID: 0}
+  playTime: 120
+--- !u!114 &5393660359241696308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7720426825735196081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce1fd0300d33394a96b0ab888dd1d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2153174721432451907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7720426825735196081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6114b0e0e4e074f846514e2475872e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7720426826074939533
 GameObject:
   m_ObjectHideFlags: 0

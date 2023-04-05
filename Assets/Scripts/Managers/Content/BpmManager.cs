@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BpmManager
 {
-    int bpm = 115;
+    int bpm = 100;
     //public bool Able;
 
     public Action BehaveAction;     //BpmManager의 UpdatePerBit()에서 실행(바로 아래)
@@ -15,10 +15,8 @@ public class BpmManager
     public int BPM
     {
         get { return bpm; }
-        private set
-        {
-            bpm = value;
-        }
+        set { bpm = value; }
+
     }
 
     //Activates BehaveAction every 60d / bpm seconds

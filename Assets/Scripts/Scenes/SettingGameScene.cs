@@ -18,12 +18,14 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
         SpawnMonster();       
         SpawnPlayer();
         SpawnItemSpawner();
+        CheckingGame();
+        SpawnDoorOpen();
     }
     public void Update()
     {
         Managers.Bpm.UpdatePerBit();
     }
-
+  
     private void SpawnBackGround()
     {
         Managers.Resource.Instantiate("BackGrounds/SettingBackground");
@@ -60,11 +62,12 @@ public class SettingGameScene : BaseScene//At the beginning of the this scene, r
         {
             SpawnMonsterHpBar(go);  
             Managers.Monster.BossMonster = go;
+            Managers.Monster.Init(Define.GameSceneOrder.SettingScene_main);
         }
     }   
     private void SpawnPlayerHpBar(GameObject parent)
     {
-        GameObject go = Managers.Resource.Instantiate("Players/PlayerHP");
+        GameObject go = Managers.Resource.Instantiate("Players/PlayerHP_Setting");
         parent.GetComponent<PlayerHpBarUpdater>().SetPlayerHpBar(go);
     }
 
