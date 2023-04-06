@@ -12,11 +12,8 @@ public class LobbyScene : BaseScene
     protected override void Init()
     {
         base.Init();
-        SpawnDoorOpenUI();
+        SoundBgmPlay();
     }
     
-    private void SpawnDoorOpenUI()
-    {
-        Managers.Resource.Instantiate("UI/DoorOpenLobby");
-    }
+
 }

@@ -12,7 +12,7 @@ public class Define
     }
     public enum GameSceneOrder
     {
-        TimeScene_main,//120
+        TimeScene_main = 1,//120
         CameraScene_main,//120
         NavigationScene_main,//HP 100
         MessageScene_main,//120
@@ -24,5 +24,6 @@ public class Define
 
         //WeatherScene,
         //DiliveryScene,
+        Count,
     }
 }
