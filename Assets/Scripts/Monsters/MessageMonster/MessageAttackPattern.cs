@@ -17,7 +17,7 @@ public class MessageAttackPattern : MonoBehaviour
     public void Init()
     {
         noteBarList_1 = new List<FunctionPointer>() { One, Rest, One, Rest };
-        noteBarList_2 = new List<FunctionPointer>() { Row, Rest, Row, Rest };
+        noteBarList_2 = new List<FunctionPointer>() { Row, Rest, Column, Rest };
         noteBarList_3 = new List<FunctionPointer>() { One, Rest, One, Rest };
     }
 
@@ -34,14 +34,15 @@ public class MessageAttackPattern : MonoBehaviour
         Managers.Field.GetGrid(xrand, yrand).GetComponent<Animator>().SetTrigger("MessageOne");
         Invoke("ActivateOneAttackAnim", 0.1f);
     }
-
-    private void Defalut1_1()
+    private void Column()
     {
-
-    }
-    private void Defalut1_2()
-    {
-
+        Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("Message_WingAttack");
+        //ActivateFeatherEffect();
+        int colInd = (int)Random.Range(0, 3);
+        for (int i = 0; i < Managers.Field.GetWidth(); i++)
+        {
+            Managers.Field.GetGrid(i, colInd).GetComponent<Animator>().SetTrigger("MessageRow");
+        }
     }
     private void Row()
     {
@@ -87,7 +88,7 @@ public class MessageAttackPattern : MonoBehaviour
         GameObject beak = Instantiate(go);
         FieldInfo fieldInfo = Managers.Field.GetFieldInfo(x, y);
         beak.transform.position = fieldInfo.grid.transform.position;
-
+        Managers.Sound.Play("MessageMonster/OneAttack", Define.Sound.Effect, 1.0f, 0.1f);
     }
 
 
@@ -108,6 +109,7 @@ public class MessageAttackPattern : MonoBehaviour
         GameObject feather = Instantiate(go);
         FieldInfo fieldInfo = Managers.Field.GetFieldInfo(x, y);
         feather.transform.position = fieldInfo.grid.transform.position;
+        Managers.Sound.Play("MessageMonster/FeatherAttack", Define.Sound.Effect, 1.0f, 0.1f);
     }
     #endregion
 }
