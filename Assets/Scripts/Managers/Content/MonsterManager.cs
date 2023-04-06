@@ -21,4 +21,9 @@ public class MonsterManager
         this.alive = alive;
     }
     public Define.GameSceneOrder CurrentMonsterSceneName() { return CurrentMonsterScene; }
+    public void MonsterHit()
+    {
+        BossMonster.GetComponent<MonsterHpBarUpdater>().currentTime -= 5;
+        BossMonster.GetComponent<Animator>().SetTrigger("Hit");
+    }
 }
