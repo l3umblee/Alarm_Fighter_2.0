@@ -15,6 +15,8 @@ public class Define
         TimeScene_main = 1,//120
         CameraScene_main,//120
         SettingScene_main,//120
+        NavigationScene_main,//120
+        MessageScene_main,
         Map,
         //Finished
         //FolderScene,
