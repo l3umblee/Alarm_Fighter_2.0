@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManagerEx
 {
-    public Define.GameSceneOrder NextStage { get; private set; } = Define.GameSceneOrder.NavigationScene_main;
+    public Define.GameSceneOrder NextStage { get; private set; } //= Define.GameSceneOrder.NavigationScene_main;
 
 
 

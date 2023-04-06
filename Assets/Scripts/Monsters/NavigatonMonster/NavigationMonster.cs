@@ -25,6 +25,9 @@ public class NavigationMonster : MonoBehaviour
 
     void BitBehave()
     {
+        if (!this.transform.GetComponent<Animator>().GetBool("startEnd"))
+            return;
+        
         if (index > callOrderList.Count - 1)
             index = 0;
 
@@ -47,6 +50,10 @@ public class NavigationMonster : MonoBehaviour
         }
      }
 
+    public void ActivateStart()
+    {
+        this.transform.GetComponent<Animator>().SetBool("startEnd", true);
+    }
         //index++;
 }
 
