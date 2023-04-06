@@ -32,6 +32,7 @@ public class MessageAttackPattern : MonoBehaviour
         int yrand = (int)Random.Range(0, 3);
 
         Managers.Field.GetGrid(xrand, yrand).GetComponent<Animator>().SetTrigger("MessageOne");
+        Invoke("ActivateOneAttackAnim", 0.1f);
     }
 
     private void Defalut1_1()
@@ -66,6 +67,11 @@ public class MessageAttackPattern : MonoBehaviour
 
     // attack pattern 집어넣기
     #region messageattackpattern
+    public void ActivateOneAttackAnim()
+    {
+        Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("Message_Attack");
+    }
+
     public void MessageOneAttack()
     {
         MessageOneAttackInit(Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));
@@ -74,7 +80,7 @@ public class MessageAttackPattern : MonoBehaviour
     {
         //Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("Message_Attack");
 
-        Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("Message_Attack");
+        //Managers.Monster.BossMonster.GetComponent<Animator>().SetTrigger("Message_Attack");
         Managers.Monster.BossMonster.GetComponent<MessageMonster>().BeakAttack(x, y);
 
         GameObject go = Managers.Resource.Load<GameObject>($"Prefabs/Monsters/MessageMonster/Effects/MessageBeakAttack");
