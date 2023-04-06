@@ -12,6 +12,10 @@ public class NavigationAttackPattern : MonoBehaviour
     public List<FunctionPointer> noteBarList_3;
     public List<FunctionPointer> noteBarList_4;
     public List<FunctionPointer> noteBarList_5;
+    public List<FunctionPointer> noteBarList_6;
+    public List<FunctionPointer> noteBarList_7;
+    public List<FunctionPointer> noteBarList_8;
+    
 
     private void Awake()
     {
@@ -20,11 +24,12 @@ public class NavigationAttackPattern : MonoBehaviour
     
     public void Init()
     {
-        noteBarList_1 = new List<FunctionPointer>() { Defalut1_1, Rest ,Defalut1_2, Rest, Defalut1_1, Rest, Defalut1_2, Rest };
-        noteBarList_2 = new List<FunctionPointer>() { Defalut1_1, Rest, SpecialAttack_LLRR, Rest, Defalut1_2, Rest, SpecialAttack_LRL,Rest };
+        noteBarList_1 = new List<FunctionPointer>() { Defalut1_2, Rest , Defalut1_1, Rest, Defalut1_2, Rest, Defalut1_1, Rest };
+        noteBarList_2 = new List<FunctionPointer>() { Defalut1_2, Rest, SpecialAttack_LLRR, Rest, Defalut1_1, Rest, SpecialAttack_LRL,Rest };
         noteBarList_3 = new List<FunctionPointer>() { Column2, Rest, Row2, Rest, Column3, Rest, Row3, Rest };
-        noteBarList_4 = new List<FunctionPointer>() { Defalut1_1, Rest, SpecialAttack_LRRL, Rest, Defalut1_2, Rest, SpecialAttack_RLRL, Rest };
+        noteBarList_4 = new List<FunctionPointer>() { Defalut1_2, Rest, SpecialAttack_LRRL, Rest, Defalut1_1, Rest, SpecialAttack_RLRL, Rest };
         noteBarList_5 = new List<FunctionPointer>() { SpecialAttack_LLLLRR, Rest, SpecialAttack_RRRRLL, Rest, SpecialAttack_LLLLRR, Rest, SpecialAttack_RRRRLL, Rest };
+        //noteBarList_6 = new List<FunctionPointer>() { };
 
     }
     private void Rest()
@@ -64,11 +69,10 @@ public class NavigationAttackPattern : MonoBehaviour
         return callOrderList;
     }
 
-
-
+   
     // attack pattern 집어넣기
     #region navigationattackpattern
-    
+
     public void One()
     {
 
