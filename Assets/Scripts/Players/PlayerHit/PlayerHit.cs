@@ -22,6 +22,7 @@ public class PlayerHit : MonoBehaviour
         if(collision.gameObject.CompareTag("Attack"))
         {
             Hit();
+            Handheld.Vibrate();
         }
     }
 }
