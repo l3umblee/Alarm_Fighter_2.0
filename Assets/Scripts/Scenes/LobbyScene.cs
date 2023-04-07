@@ -13,7 +13,11 @@ public class LobbyScene : BaseScene
     {
         base.Init();
         SoundBgmPlay();
+        SpawnLobbyUI();
     }
     
-
+    private void SpawnLobbyUI()
+    {
+        Managers.Resource.Instantiate("UI/Lobby/LobbyUI");
+    }
 }
