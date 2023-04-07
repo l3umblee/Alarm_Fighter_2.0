@@ -11,7 +11,7 @@ public class HitHandler_Defalut : HitHandler
 
     public override void Request()
     {
-        float damage = -1f;
+        float damage = 0f;
         if(stat != null)
         {
             stat.transform.GetChild(0).GetComponent<Animator>().SetTrigger("hit");

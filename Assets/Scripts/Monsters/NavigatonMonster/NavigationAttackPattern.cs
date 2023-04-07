@@ -24,12 +24,13 @@ public class NavigationAttackPattern : MonoBehaviour
     
     public void Init()
     {
-        noteBarList_1 = new List<FunctionPointer>() { Defalut1_2, Rest , Defalut1_1, Rest, Defalut1_2, Rest, Defalut1_1, Rest };
-        noteBarList_2 = new List<FunctionPointer>() { Defalut1_2, Rest, SpecialAttack_LLRR, Rest, Defalut1_1, Rest, SpecialAttack_LRL,Rest };
+        noteBarList_1 = new List<FunctionPointer>() { Default1_2, Rest , Default1_1, Rest, Default1_2, Rest, Default1_1, Rest };
+        noteBarList_2 = new List<FunctionPointer>() { Default1_2, Rest, SpecialAttack_LLRR, Rest, Default1_1, Rest, SpecialAttack_LRL,Rest };
         noteBarList_3 = new List<FunctionPointer>() { Column2, Rest, Row2, Rest, Column3, Rest, Row3, Rest };
-        noteBarList_4 = new List<FunctionPointer>() { Defalut1_2, Rest, SpecialAttack_LRRL, Rest, Defalut1_1, Rest, SpecialAttack_RLRL, Rest };
+        noteBarList_4 = new List<FunctionPointer>() { Default1_2, Rest, SpecialAttack_LRRL, Rest, Default1_1, Rest, SpecialAttack_RLRL, Rest };
         noteBarList_5 = new List<FunctionPointer>() { SpecialAttack_LLLLRR, Rest, SpecialAttack_RRRRLL, Rest, SpecialAttack_LLLLRR, Rest, SpecialAttack_RRRRLL, Rest };
-        //noteBarList_6 = new List<FunctionPointer>() { };
+        
+        noteBarList_6 = new List<FunctionPointer>() { Default2_1, Rest, Default2_2, Rest, Default2_3, Rest ,SpecialAttack_LLLLRR , SpecialAttack_RRRRLL };
 
     }
     private void Rest()
@@ -38,7 +39,7 @@ public class NavigationAttackPattern : MonoBehaviour
     }
 
     // field의 애니메이션은 몬스터마다 알맞은 애니메이션 이름으로 바꿔주어야 함. (지금은 이미 만들어진 카메라 몬스터 촉수 One으로 통일)
-    private void Defalut1_1()
+    private void Default1_1()
     {
         Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
@@ -46,24 +47,49 @@ public class NavigationAttackPattern : MonoBehaviour
         Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
     }
-    private void Defalut1_2()
+    private void Default1_2()
     {
         Managers.Field.GetGrid(1, 0).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(0, 1).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 1).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(1, 2).GetComponent<Animator>().SetTrigger("One");
     }
+    
+    private void Default2_1()
+    {
+        Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(1, 1).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
+    }
+
+    private void Default2_2()
+    {
+        Managers.Field.GetGrid(1, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(0, 1).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(1, 2).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 1).GetComponent<Animator>().SetTrigger("One");
+    }
+
+    private void Default2_3()
+    {
+        Managers.Field.GetGrid(1, 1).GetComponent<Animator>().SetTrigger("One");
+       
+    }
 
     public List<List<FunctionPointer>> CreateCallOrderList()
     {
         List<List<FunctionPointer>> callOrderList = new List<List<FunctionPointer>>();
-        
-        callOrderList.Add(noteBarList_1);
-        callOrderList.Add(noteBarList_2);
-        callOrderList.Add(noteBarList_3);
-        callOrderList.Add(noteBarList_4);
-        callOrderList.Add(noteBarList_3);
-        callOrderList.Add(noteBarList_5);
+
+        /* callOrderList.Add(noteBarList_1);
+         callOrderList.Add(noteBarList_2);
+         callOrderList.Add(noteBarList_3);
+         callOrderList.Add(noteBarList_4);
+         callOrderList.Add(noteBarList_3);
+         callOrderList.Add(noteBarList_5);*/
+
+        callOrderList.Add(noteBarList_6);
 
 
         return callOrderList;
