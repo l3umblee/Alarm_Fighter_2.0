@@ -16,6 +16,7 @@ public class HitHandler_Defalut : HitHandler
         {
             stat.transform.GetChild(0).GetComponent<Animator>().SetTrigger("hit");
             stat.FillHp(damage);
+            Handheld.Vibrate();
         }
     }
 }
