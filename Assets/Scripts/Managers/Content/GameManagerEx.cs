@@ -22,7 +22,10 @@ public class GameManagerEx
     public void LoadGame()
     {
         if (!PlayerPrefs.HasKey("NextStage"))
+        {
+            NextStage = Define.GameSceneOrder.TimeScene_main;
             return;
+        }
 
         NextStage = (Define.GameSceneOrder)PlayerPrefs.GetInt("NextStage");
 
@@ -37,7 +40,6 @@ public class GameManagerEx
     public void Init()
     {
         LoadGame();
-        NextStage = Define.GameSceneOrder.Count;
     }
 }
 
