@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManagerEx
 {
-    public Define.GameSceneOrder NextStage { get; private set; } = Define.GameSceneOrder.TimeScene_main;
+    public Define.GameSceneOrder NextStage { get; private set; }
 
-    public void UpdateNextStage() { NextStage++; }
+    public void UpdateNextStage() { NextStage += 1; }
 
     public void QuitGame()
     {
@@ -26,6 +26,18 @@ public class GameManagerEx
 
         NextStage = (Define.GameSceneOrder)PlayerPrefs.GetInt("NextStage");
 
+    }
+
+    public void ResetGame()
+    {
+        NextStage = Define.GameSceneOrder.TimeScene_main;
+        SaveGame();
+    }
+
+    public void Init()
+    {
+        LoadGame();
+        NextStage = Define.GameSceneOrder.Count;
     }
 }
 
