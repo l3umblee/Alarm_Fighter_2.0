@@ -22,7 +22,7 @@ public class Injector : MonoBehaviour
     public void Attack()
     {
         //Managers.Timer.ReduceTime(timeAmount);
-        Managers.Monster.BossMonster.GetComponent<MonsterHpBarUpdater>().currentTime -= 5;
+        Managers.Monster.MonsterHit();
         Destroy();
     }
 
@@ -33,14 +33,13 @@ public class Injector : MonoBehaviour
         if (Vector3.Magnitude(effect.transform.position - target.transform.position) <= 0.001)
         {
             Attack();
+            
         }
     }
 
     void Destroy()
     {
-        //Managers.Resource.Destroy(gameObject);
-        Object.Destroy(gameObject);
-        effect.GetComponent<Animator>().Play("Hit");
+        Managers.Resource.Destroy(gameObject);
     }
 
 
