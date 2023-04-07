@@ -25,4 +25,12 @@ public class LobbyButton : MonoBehaviour
         GameObject go = Managers.Resource.Instantiate("UI/DoorCloseUI");
         go.GetComponent<Door>().SetName(Managers.Game.NextStage.ToString());
     }
+
+    public void ClickReset()
+    {
+        Managers.Game.ResetGame();
+        Debug.Log("Reset");
+        GetComponent<LobbyUI>().Reset();
+    }
+
 }

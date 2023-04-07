@@ -44,6 +44,9 @@ public class ItemManager
         itemList.Add("Items/DroppedItems/DroppedHealPotion");
         itemList.Add("Items/DroppedItems/DroppedRandomBox");
         itemList.Add("Items/DroppedItems/DroppedVaccineGun");
+        itemList.Add("Items/DroppedItems/DroppedVaccineGun");
+        itemList.Add("Items/DroppedItems/DroppedVaccineGun");
+        itemList.Add("Items/DroppedItems/DroppedVaccineGun");
     }
 
 }

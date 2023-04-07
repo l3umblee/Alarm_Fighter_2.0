@@ -20,7 +20,8 @@ public class LobbyUI : MonoBehaviour
     LobbyState state = LobbyState.Ready;
     [SerializeField]
     Image progressBar;
-
+    [SerializeField]
+    Button scanBtn;
 
 
     public void SetState(int state)
@@ -28,10 +29,7 @@ public class LobbyUI : MonoBehaviour
         this.state = (LobbyState)state;
     }
 
-    private void Start()
-    {
-        Managers.Game.LoadGame();
-    }
+
     private void Update()
     {
         switch(state)
@@ -53,9 +51,9 @@ public class LobbyUI : MonoBehaviour
 
     private void UpdateReady()
     {
-        if(Managers.Game.NextStage != Define.GameSceneOrder.TimeScene_main)
+        if (Managers.Game.NextStage != Define.GameSceneOrder.TimeScene_main)
         {
-            progressBar.fillAmount = (float)(Managers.Game.NextStage - 1) / (float)Define.GameSceneOrder.Count;    
+            progressBar.fillAmount = (float)(Managers.Game.NextStage - 1) / (float)Define.GameSceneOrder.Count;
         }
     }
     private void UpdateScan()
@@ -70,7 +68,8 @@ public class LobbyUI : MonoBehaviour
     }
     private void UpdateFinish()
     {
-
+        if(scanBtn.interactable)
+            scanBtn.interactable = false;
     }
 
 
@@ -82,6 +81,7 @@ public class LobbyUI : MonoBehaviour
             //End!!
             Debug.Log("end");
             state = LobbyState.Finish;
+            GetComponent<Animator>().Play("Finish");
         }
         if(progressBar.fillAmount <= progress)
         {
@@ -96,4 +96,12 @@ public class LobbyUI : MonoBehaviour
 
         }
     }
+    public void Reset()
+    {
+        progressBar.fillAmount = 0;
+        scanBtn.interactable = true;
+        state = LobbyState.Ready;
+        GetComponent<Animator>().Play("Idle");
+    }
+
 }
