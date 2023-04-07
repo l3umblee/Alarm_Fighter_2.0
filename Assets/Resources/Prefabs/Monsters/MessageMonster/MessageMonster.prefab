@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterHPbar: {fileID: 0}
-  playTime: 120
+  playTime: 100
   currentTime: 0
 --- !u!114 &5393660359241696308
 MonoBehaviour:

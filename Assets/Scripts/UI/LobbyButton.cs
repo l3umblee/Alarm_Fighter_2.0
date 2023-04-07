@@ -22,7 +22,7 @@ public class LobbyButton : MonoBehaviour
 
     public void LoadStage()
     {
-        GameObject go = Managers.Resource.Instantiate("UI/DoorClose");
+        GameObject go = Managers.Resource.Instantiate("UI/DoorCloseUI");
         go.GetComponent<Door>().SetName(Managers.Game.NextStage.ToString());
     }
 }

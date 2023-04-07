@@ -85,13 +85,13 @@ public class LobbyUI : MonoBehaviour
         }
         if(progressBar.fillAmount <= progress)
         {
-            progressBar.fillAmount += 0.1f * Time.deltaTime;
+            progressBar.fillAmount += 0.08f * Time.deltaTime;
 
         }
         else
         {
             state = LobbyState.ScanEnd;
-            Util.FindChild(gameObject, $"{Managers.Game.NextStage.ToString()}_Btn", true).GetComponent<Animator>().enabled = true;
+            Util.FindChild(gameObject, $"{Managers.Game.NextStage}_Btn", true).GetComponent<Animator>().enabled = true;
             GetComponent<Animator>().SetBool("ScanEnd", true);
 
         }
