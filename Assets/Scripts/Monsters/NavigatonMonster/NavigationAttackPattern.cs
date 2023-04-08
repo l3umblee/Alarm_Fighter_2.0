@@ -12,9 +12,13 @@ public class NavigationAttackPattern : MonoBehaviour
     public List<FunctionPointer> noteBarList_3;
     public List<FunctionPointer> noteBarList_4;
     public List<FunctionPointer> noteBarList_5;
-    public List<FunctionPointer> noteBarList_6;
+    public List<FunctionPointer> noteBarList_6_1;
+    public List<FunctionPointer> noteBarList_6_2;
     public List<FunctionPointer> noteBarList_7;
-    public List<FunctionPointer> noteBarList_8;
+    public List<FunctionPointer> noteBarList_8_1;
+    public List<FunctionPointer> noteBarList_8_2;
+    public List<FunctionPointer> noteBarList_9_1;
+    public List<FunctionPointer> noteBarList_9_2;
     
 
     private void Awake()
@@ -24,13 +28,27 @@ public class NavigationAttackPattern : MonoBehaviour
     
     public void Init()
     {
+        //notes that are not using
         noteBarList_1 = new List<FunctionPointer>() { Default1_2, Rest , Default1_1, Rest, Default1_2, Rest, Default1_1, Rest };
         noteBarList_2 = new List<FunctionPointer>() { Default1_2, Rest, SpecialAttack_LLRR, Rest, Default1_1, Rest, SpecialAttack_LRL,Rest };
-        noteBarList_3 = new List<FunctionPointer>() { Column2, Rest, Row2, Rest, Column3, Rest, Row3, Rest };
         noteBarList_4 = new List<FunctionPointer>() { Default1_2, Rest, SpecialAttack_LRRL, Rest, Default1_1, Rest, SpecialAttack_RLRL, Rest };
         noteBarList_5 = new List<FunctionPointer>() { SpecialAttack_LLLLRR, Rest, SpecialAttack_RRRRLL, Rest, SpecialAttack_LLLLRR, Rest, SpecialAttack_RRRRLL, Rest };
         
-        noteBarList_6 = new List<FunctionPointer>() { Default2_1, Rest, Default2_2, Rest, Default2_3, Rest ,SpecialAttack_LLLLRR , SpecialAttack_RRRRLL };
+        //notes that are using now
+        noteBarList_7 = new List<FunctionPointer>() { One, Rest, One, Rest, One, Rest, One, Rest };
+        
+        noteBarList_6_1 = new List<FunctionPointer>() { Default2_1, Rest, Default2_2_1, Rest, Default2_3, Rest ,SpecialAttack_LLLLRR , Rest };
+        noteBarList_6_2 = new List<FunctionPointer>() { SpecialAttack_RRRRLL, Rest, Default2_3, Rest, Default2_2_2, Rest , Default2_1, Rest };
+
+        noteBarList_8_1 = new List<FunctionPointer>() { Default2_1, Rest, Default2_2_1, Rest, Default2_3, Rest, SpecialAttack_LLRR, Rest };
+        noteBarList_8_2 = new List<FunctionPointer>() { Default2_1, Rest, Default2_2_2, Rest, Default2_3, Rest, SpecialAttack_LRL, Rest };
+
+        noteBarList_9_1 = new List<FunctionPointer>() { Default2_1, Rest, Default2_2_1, Rest, Default2_3, Rest, SpecialAttack_LRRL, Rest };
+        noteBarList_9_2 = new List<FunctionPointer>() { Default2_1, Rest, Default2_2_2, Rest, Default2_3, Rest, SpecialAttack_RLRL, Rest };
+        
+        noteBarList_3 = new List<FunctionPointer>() { Column2, Rest, Row2, Rest, Column3, Rest, Row3, Rest };
+        
+        
 
     }
     private void Rest()
@@ -57,19 +75,24 @@ public class NavigationAttackPattern : MonoBehaviour
     
     private void Default2_1()
     {
-        Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(0, 2).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(1, 1).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(2, 0).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
     }
 
-    private void Default2_2()
+    private void Default2_2_1()
+    {
+        Managers.Field.GetGrid(0, 1).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 1).GetComponent<Animator>().SetTrigger("One");
+    }
+    private void Default2_2_2()
     {
         Managers.Field.GetGrid(1, 0).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(0, 1).GetComponent<Animator>().SetTrigger("One");
         Managers.Field.GetGrid(1, 2).GetComponent<Animator>().SetTrigger("One");
-        Managers.Field.GetGrid(2, 1).GetComponent<Animator>().SetTrigger("One");
+    }
+    private void Default2_2_3()
+    {
+        Managers.Field.GetGrid(0, 0).GetComponent<Animator>().SetTrigger("One");
+        Managers.Field.GetGrid(2, 2).GetComponent<Animator>().SetTrigger("One");
     }
 
     private void Default2_3()
@@ -82,16 +105,23 @@ public class NavigationAttackPattern : MonoBehaviour
     {
         List<List<FunctionPointer>> callOrderList = new List<List<FunctionPointer>>();
 
-        /* callOrderList.Add(noteBarList_1);
-         callOrderList.Add(noteBarList_2);
-         callOrderList.Add(noteBarList_3);
-         callOrderList.Add(noteBarList_4);
-         callOrderList.Add(noteBarList_3);
-         callOrderList.Add(noteBarList_5);*/
+        /*callOrderList.Add(noteBarList_1);
+        callOrderList.Add(noteBarList_2);
+        callOrderList.Add(noteBarList_3);
+        callOrderList.Add(noteBarList_4);
+        callOrderList.Add(noteBarList_3);
+        callOrderList.Add(noteBarList_5);*/
 
-        callOrderList.Add(noteBarList_6);
+        callOrderList.Add(noteBarList_7);
+        callOrderList.Add(noteBarList_6_1);
+        callOrderList.Add(noteBarList_6_2);
+        callOrderList.Add(noteBarList_8_1);
+        callOrderList.Add(noteBarList_8_2);
+        callOrderList.Add(noteBarList_9_1);
+        callOrderList.Add(noteBarList_9_2);
+        callOrderList.Add(noteBarList_3);
 
-
+        
         return callOrderList;
     }
 
@@ -105,6 +135,7 @@ public class NavigationAttackPattern : MonoBehaviour
         int x = UnityEngine.Random.Range(0, 3);
         int y = UnityEngine.Random.Range(0, 3);
 
+        //Managers.Sound.Play("NavigationMonster/Destination2", Define.Sound.Effect, 1.0f, 1.0f);
         Managers.Field.GetGrid(x, y).GetComponent<Animator>().SetTrigger("One");
         //grid 색까을 바꾸는 애니메이션을 호출하고 그 끝에 Destination_Attack 함수를 event로 호출
 
@@ -117,21 +148,16 @@ public class NavigationAttackPattern : MonoBehaviour
         int destinationNum = UnityEngine.Random.Range(0, destinationArray.Count);
         Debug.Log("destinationNUM:  " + destinationNum);
 
-        //GameObject go = Managers.Resource.Load<GameObject>($"Prefabs/Monsters/CameraMonster/Effects/{tantacleArray[tantacleNum]}");
-        Managers.Sound.Play("NavigationMonster/Destination", Define.Sound.Effect, 1.0f, 0.1f);
+        Managers.Sound.Play("NavigationMonster/Destination2", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>($"Prefabs/Monsters/NavigationMonster/Effects/{destinationArray[destinationNum]}");//destination prefab을 로드하여 생성
-        if (go == null) 
-            Debug.Log("go is null");
+
         GameObject destination = Instantiate<GameObject>(go);
         GameObject grid = Managers.Field.GetGrid(Managers.Field.GetIndex_X(gameObject), Managers.Field.GetIndex_Y(gameObject));
         Vector2 girdPosition = grid.transform.position;
         girdPosition.y += 2.7f;
         destination.transform.localPosition = girdPosition;
 
-        /*Debug.Log("field의 그리드가 호출하는:  "+ destinationNum);
-        destinationNum++;
-        if (destinationNum > 3)
-            destinationNum = 0;*/
+        
         //destination prefab은 몇초후 사라지게 하는 스크립트와 생성시 자동재생되는 애니메이션을 가지고 있어야한다
     }
 
@@ -142,17 +168,15 @@ public class NavigationAttackPattern : MonoBehaviour
     }
     public void Row2()
     {
-        //int row_index = UnityEngine.Random.Range(0, Managers.Field.GetHeight());
         for (int i = 0; i < Managers.Field.GetWidth(); i++)
         {
             Managers.Field.GetGrid(1, i).GetComponent<Animator>().SetTrigger("Row");
-            //Managers.Field.GetGrid(x, y).GetComponent<Animator>().SetTrigger("One");
         }
         Invoke("Row2_Init", 0.3f);
     }
     public void Row2_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowRR");
         GameObject arrowRR = Instantiate<GameObject>(go);
         Transform field = Managers.Field.GetGrid(1, 1).transform;
@@ -161,18 +185,16 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void Row3()
     {
-        //int row_index = UnityEngine.Random.Range(0, Managers.Field.GetHeight());
         for (int i = 0; i < Managers.Field.GetWidth(); i++)
         {
             Managers.Field.GetGrid(2, i).GetComponent<Animator>().SetTrigger("Row");
-            //Managers.Field.GetGrid(x, y).GetComponent<Animator>().SetTrigger("One");
         }
         Invoke("Row3_Init", 0.3f);
     }
     
     public void Row3_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowRR");
         GameObject arrowRR = Instantiate<GameObject>(go);
         Transform field = Managers.Field.GetGrid(2, 1).transform;
@@ -181,11 +203,9 @@ public class NavigationAttackPattern : MonoBehaviour
     
     public void Column2()
     {
-        //int column_index = UnityEngine.Random.Range(0, Managers.Field.GetWidth());
         for (int i = 0; i < Managers.Field.GetHeight(); i++)
         {
             Managers.Field.GetGrid(i, 1).GetComponent<Animator>().SetTrigger("Column");
-            //Managers.Field.GetGrid(x, y).GetComponent<Animator>().SetTrigger("One");
             //여러개의 grid가 색깔이 변하도록 하고 특정 grid에서 straight_arrow prefab 을 instantiate 한다
         }
         Invoke("Column2_Init", 0.3f);
@@ -193,7 +213,7 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void Column2_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowLL");
         GameObject arrowLL = Instantiate<GameObject>(go);
         Transform field = Managers.Field.GetGrid(1, 1).transform;
@@ -203,11 +223,9 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void Column3()
     {
-        //int column_index = UnityEngine.Random.Range(0, Managers.Field.GetWidth());
         for (int i = 0; i < Managers.Field.GetHeight(); i++)
         {
             Managers.Field.GetGrid(i, 2).GetComponent<Animator>().SetTrigger("Column");
-            //Managers.Field.GetGrid(x, y).GetComponent<Animator>().SetTrigger("One");
             //여러개의 grid가 색깔이 변하도록 하고 특정 grid에서 straight_arrow prefab 을 instantiate 한다
         }
         Invoke("Column3_Init", 0.3f);
@@ -215,7 +233,7 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void Column3_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowLL");
         GameObject arrowLL = Instantiate<GameObject>(go);
         Transform field = Managers.Field.GetGrid(1,2).transform;
@@ -224,25 +242,7 @@ public class NavigationAttackPattern : MonoBehaviour
 
     //======================================================
 
-    public void special()
-    {
-        int rand_num = UnityEngine.Random.Range(0, 3);
-
-        if (rand_num == 0)
-        {
-            //지정된 grid들이 애니메이션을 실행한다
-            //해당 애니매이션이 끝나면 이미 지정된 영역의 SpecialAttack_1()을 Instantiate 한다
-        }
-        else if (rand_num == 1)
-        {
-           
-        }
-        else if (rand_num == 2)
-        {
-            
-        }
-      
-    }
+    
 
     public void SpecialAttack_LLRR()
     {
@@ -258,7 +258,7 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void SpecialAttack_LLRR_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowLLRR");
         GameObject arrowLL = Instantiate<GameObject>(go);
     }
@@ -275,7 +275,7 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void SpecialAttack_LRL_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowLRL");
         GameObject arrowLL = Instantiate<GameObject>(go);
     }
@@ -294,7 +294,7 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void SpecialAttack_LRRL_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowLRRL");
         GameObject arrowLL = Instantiate<GameObject>(go);
     }
@@ -313,7 +313,7 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void SpecialAttack_RLRL_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowRLRL");
         GameObject arrowLL = Instantiate<GameObject>(go);
     }
@@ -334,7 +334,7 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void SpecialAttack_LLLLRR_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowLLLLRR");
         GameObject arrowLL = Instantiate<GameObject>(go);
     }
@@ -354,9 +354,30 @@ public class NavigationAttackPattern : MonoBehaviour
 
     public void SpecialAttack_RRRRLL_Init()
     {
-        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 0.5f);
+        Managers.Sound.Play("NavigationMonster/Arrow", Define.Sound.Effect, 1.0f, 1.0f);
         GameObject go = Managers.Resource.Load<GameObject>("Prefabs/Monsters/NavigationMonster/Effects/ArrowRRRRLL");
         GameObject arrowLL = Instantiate<GameObject>(go);
+    }
+
+    #region
+    public void special()
+    {
+        int rand_num = UnityEngine.Random.Range(0, 3);
+
+        if (rand_num == 0)
+        {
+            //지정된 grid들이 애니메이션을 실행한다
+            //해당 애니매이션이 끝나면 이미 지정된 영역의 SpecialAttack_1()을 Instantiate 한다
+        }
+        else if (rand_num == 1)
+        {
+
+        }
+        else if (rand_num == 2)
+        {
+
+        }
+
     }
 
     public void SpecialAttack_RLL()
@@ -375,7 +396,7 @@ public class NavigationAttackPattern : MonoBehaviour
     {
         Managers.Resource.Instantiate("  ");
     }
-
+    #endregion
 
     #endregion
 }
