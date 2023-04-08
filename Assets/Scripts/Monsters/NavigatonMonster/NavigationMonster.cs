@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance;
 
 public class NavigationMonster : MonoBehaviour
 {
@@ -39,13 +40,13 @@ public class NavigationMonster : MonoBehaviour
             note = 0;
             index++;
             
-            if(index == 1 || index == 3)
-            {
-                GetComponent<Animator>().SetTrigger("Angry_Idle");
-            }
-            else
+            if(index == 1 || index == 3 || index == 5)
             {
                 GetComponent<Animator>().SetTrigger("Caution");
+            }
+            else if(index == 7)
+            {
+                GetComponent<Animator>().SetTrigger("Angry_Idle");
             }
         }
      }
