@@ -11,3 +11,7 @@ AISW Fellowship 에서 시작한 AlamrFighter의 가장 최종 버전 입니다.
 
 <img src="https://user-images.githubusercontent.com/99014066/256570428-733a14f1-4790-4639-83e4-57f1ee377acf.gif">
 
+🎵 리듬에 맞춰 몬스터의 공격을 피하고, 아이템들로 반격하세요! 
+
+🚀 다양한 몬스터와 노래를 즐기세요!
+
