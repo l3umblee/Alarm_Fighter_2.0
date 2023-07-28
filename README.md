@@ -23,4 +23,4 @@ AISW Fellowship 에서 시작한 AlamrFighter의 가장 최종 버전 입니다.
 
 With..
 
-capableofanything / dongdong2222 / leo4102 / yeon ju kim / l3umblee
+capableofanything / leo4102 / dongdong2222 / yeon ju kim / l3umblee
